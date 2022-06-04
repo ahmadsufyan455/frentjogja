@@ -29,6 +29,7 @@ class LoginScreen extends StatelessWidget {
                 AuthInput(
                   controller: controller.email,
                   hintText: 'Email',
+                  inputType: TextInputType.emailAddress,
                 ),
                 const SizedBox(height: 16.0),
                 AuthInput(
@@ -36,6 +37,7 @@ class LoginScreen extends StatelessWidget {
                   hintText: 'Password',
                   obscureText: true,
                   isHasSuffix: true,
+                  inputType: TextInputType.visiblePassword,
                 ),
                 const SizedBox(height: 34.0),
                 CustomButton(

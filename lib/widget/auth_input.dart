@@ -11,17 +11,20 @@ class AuthInput extends StatelessWidget {
     required this.hintText,
     this.obscureText = false,
     this.isHasSuffix = false,
+    required this.inputType,
   }) : super(key: key);
 
   final TextEditingController controller;
   final String hintText;
   final bool obscureText;
   final bool isHasSuffix;
+  final TextInputType inputType;
 
   @override
   Widget build(BuildContext context) {
     final loginController = Get.find<LoginController>();
     return TextField(
+      keyboardType: inputType,
       obscureText: obscureText,
       controller: controller,
       decoration: InputDecoration(
