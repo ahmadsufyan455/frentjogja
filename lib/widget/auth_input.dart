@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:frent_jogja/modules/auth/login/login_controller.dart';
+import 'package:frent_jogja/modules/auth/auth_controller.dart';
 import 'package:get/get.dart';
 
 import '../utils/styles.dart';
@@ -12,6 +12,7 @@ class AuthInput extends StatelessWidget {
     this.obscureText = false,
     this.isHasSuffix = false,
     required this.inputType,
+    this.inputAction = TextInputAction.next,
   }) : super(key: key);
 
   final TextEditingController controller;
@@ -19,11 +20,14 @@ class AuthInput extends StatelessWidget {
   final bool obscureText;
   final bool isHasSuffix;
   final TextInputType inputType;
+  final TextInputAction inputAction;
 
   @override
   Widget build(BuildContext context) {
-    final loginController = Get.find<LoginController>();
+    final loginController = Get.find<AuthController>();
     return TextField(
+      style: kBodyRegular,
+      textInputAction: inputAction,
       keyboardType: inputType,
       obscureText: obscureText,
       controller: controller,

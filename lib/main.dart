@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frent_jogja/modules/auth/login/login_screen.dart';
+import 'package:frent_jogja/modules/auth/register/sign_up_screen.dart';
 import 'package:frent_jogja/modules/splash_screen.dart';
 import 'package:get/get.dart';
 
@@ -28,6 +29,10 @@ class _MyAppState extends State<MyApp> {
         GetPage(
           name: LoginScreen.routeName,
           page: () => const LoginScreen(),
+        ),
+        GetPage(
+          name: SignUpScreen.routeName,
+          page: () => const SignUpScreen(),
         ),
       ],
     );

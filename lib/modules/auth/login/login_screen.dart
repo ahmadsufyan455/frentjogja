@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:frent_jogja/modules/auth/login/login_controller.dart';
+import 'package:frent_jogja/modules/auth/auth_controller.dart';
+import 'package:frent_jogja/modules/auth/register/sign_up_screen.dart';
 import 'package:frent_jogja/utils/constants.dart';
 import 'package:frent_jogja/utils/styles.dart';
 import 'package:frent_jogja/widget/auth_input.dart';
@@ -13,7 +14,7 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(LoginController());
+    final controller = Get.put(AuthController());
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -27,17 +28,18 @@ class LoginScreen extends StatelessWidget {
                 Text('Hai, silahkan masuk', style: kHeadingBold),
                 const SizedBox(height: 24.0),
                 AuthInput(
-                  controller: controller.email,
+                  controller: controller.emailLogin,
                   hintText: 'Email',
                   inputType: TextInputType.emailAddress,
                 ),
                 const SizedBox(height: 16.0),
                 AuthInput(
-                  controller: controller.password,
-                  hintText: 'Password',
+                  controller: controller.passwordLogin,
+                  hintText: 'Kata sandi',
                   obscureText: true,
                   isHasSuffix: true,
                   inputType: TextInputType.visiblePassword,
+                  inputAction: TextInputAction.done,
                 ),
                 const SizedBox(height: 34.0),
                 CustomButton(
@@ -55,7 +57,9 @@ class LoginScreen extends StatelessWidget {
                 const SizedBox(height: 100.0),
                 Text('Belum punya akun ?', style: kBodyRegular),
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Get.toNamed(SignUpScreen.routeName);
+                  },
                   child: Text(
                     'Daftar',
                     style: kBodyBold.copyWith(color: kRed),
