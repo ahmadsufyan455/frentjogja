@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:frent_jogja/modules/auth/login_screen.dart';
+import 'package:frent_jogja/modules/splash_screen.dart';
+import 'package:get/get.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,8 +17,13 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Container(),
+    return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
+      initialRoute: SplashScreen.routeName,
+      getPages: [
+        GetPage(name: SplashScreen.routeName, page: () => const SplashScreen()),
+        GetPage(name: LoginScreen.routeName, page: () => const LoginScreen()),
+      ],
     );
   }
 }
