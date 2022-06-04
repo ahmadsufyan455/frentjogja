@@ -54,7 +54,7 @@ class LoginScreen extends StatelessWidget {
                     child: Text('Lupa password ?', style: kBodyRegular),
                   ),
                 ),
-                const SizedBox(height: 100.0),
+                const SizedBox(height: 80.0),
                 Text('Belum punya akun ?', style: kBodyRegular),
                 InkWell(
                   onTap: () {

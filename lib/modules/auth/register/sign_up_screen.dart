@@ -31,6 +31,11 @@ class SignUpScreen extends StatelessWidget {
               children: [
                 Image.asset('$image/frent-logo.png', width: 100.0),
                 const SizedBox(height: 34.0),
+                Text(
+                  'Silahkan lengkapi formulir berikut ya!',
+                  style: kBodyRegular,
+                ),
+                const SizedBox(height: 16.0),
                 AuthInput(
                   controller: controller.nameSignUp,
                   hintText: 'Nama',
