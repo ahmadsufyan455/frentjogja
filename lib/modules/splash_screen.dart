@@ -3,7 +3,7 @@ import 'package:frent_jogja/utils/constants.dart';
 import 'package:frent_jogja/utils/styles.dart';
 import 'package:get/get.dart';
 
-import 'auth/login_screen.dart';
+import 'auth/login/login_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);

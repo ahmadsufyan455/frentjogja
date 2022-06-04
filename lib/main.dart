@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:frent_jogja/modules/auth/login_screen.dart';
+import 'package:frent_jogja/modules/auth/login/login_screen.dart';
 import 'package:frent_jogja/modules/splash_screen.dart';
 import 'package:get/get.dart';
 
@@ -21,8 +21,14 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       initialRoute: SplashScreen.routeName,
       getPages: [
-        GetPage(name: SplashScreen.routeName, page: () => const SplashScreen()),
-        GetPage(name: LoginScreen.routeName, page: () => const LoginScreen()),
+        GetPage(
+          name: SplashScreen.routeName,
+          page: () => const SplashScreen(),
+        ),
+        GetPage(
+          name: LoginScreen.routeName,
+          page: () => const LoginScreen(),
+        ),
       ],
     );
   }
