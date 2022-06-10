@@ -65,7 +65,7 @@ class SignUpScreen extends StatelessWidget {
                   hintText: 'Kata sandi',
                   inputType: TextInputType.visiblePassword,
                   isHasSuffix: true,
-                  obscureText: true,
+                  isObscure: true,
                 ),
                 const SizedBox(height: 16.0),
                 AuthInput(
@@ -74,7 +74,7 @@ class SignUpScreen extends StatelessWidget {
                   inputType: TextInputType.visiblePassword,
                   inputAction: TextInputAction.done,
                   isHasSuffix: true,
-                  obscureText: true,
+                  isObscure: true,
                 ),
                 const SizedBox(height: 34.0),
                 CustomButton(

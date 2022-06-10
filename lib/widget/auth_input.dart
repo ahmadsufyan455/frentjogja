@@ -9,7 +9,7 @@ class AuthInput extends StatelessWidget {
     Key? key,
     required this.controller,
     required this.hintText,
-    this.obscureText = false,
+    this.isObscure = false,
     this.isHasSuffix = false,
     required this.inputType,
     this.inputAction = TextInputAction.next,
@@ -17,7 +17,7 @@ class AuthInput extends StatelessWidget {
 
   final TextEditingController controller;
   final String hintText;
-  final bool obscureText;
+  final bool isObscure;
   final bool isHasSuffix;
   final TextInputType inputType;
   final TextInputAction inputAction;
@@ -29,19 +29,21 @@ class AuthInput extends StatelessWidget {
       style: kBodyRegular,
       textInputAction: inputAction,
       keyboardType: inputType,
-      obscureText: obscureText,
+      obscureText: isObscure,
       controller: controller,
       decoration: InputDecoration(
         isDense: true,
         suffixIcon: isHasSuffix
-            ? IconButton(
-                onPressed: () {
-                  loginController.showPassword();
-                },
-                icon: Icon(
-                  loginController.isObscure.value
-                      ? Icons.visibility_off
-                      : Icons.visibility,
+            ? Obx(
+                () => IconButton(
+                  onPressed: () {
+                    loginController.showPassword();
+                  },
+                  icon: Icon(
+                    loginController.isObscure.value
+                        ? Icons.visibility_off
+                        : Icons.visibility,
+                  ),
                 ),
               )
             : null,

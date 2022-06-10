@@ -36,7 +36,7 @@ class LoginScreen extends StatelessWidget {
                 AuthInput(
                   controller: controller.passwordLogin,
                   hintText: 'Kata sandi',
-                  obscureText: true,
+                  isObscure: true,
                   isHasSuffix: true,
                   inputType: TextInputType.visiblePassword,
                   inputAction: TextInputAction.done,
