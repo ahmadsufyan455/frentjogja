@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frent_jogja/modules/auth/auth_controller.dart';
 import 'package:frent_jogja/modules/auth/register/sign_up_screen.dart';
-import 'package:frent_jogja/modules/dashboard/dashboard.dart';
 import 'package:frent_jogja/utils/constants.dart';
 import 'package:frent_jogja/utils/styles.dart';
 import 'package:frent_jogja/widget/auth_input.dart';
@@ -45,7 +44,12 @@ class LoginScreen extends StatelessWidget {
                 const SizedBox(height: 34.0),
                 CustomButton(
                   text: 'Masuk',
-                  onPressed: () => Get.toNamed(Dashboard.routeName),
+                  onPressed: () {
+                    controller.login(
+                      controller.emailLogin.text.trim(),
+                      controller.passwordLogin.text.trim(),
+                    );
+                  },
                 ),
                 const SizedBox(height: 34.0),
                 Align(

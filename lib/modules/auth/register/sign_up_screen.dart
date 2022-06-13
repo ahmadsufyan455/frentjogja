@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:frent_jogja/modules/auth/auth_controller.dart';
-import 'package:frent_jogja/utils/constants.dart';
-import 'package:frent_jogja/utils/styles.dart';
-import 'package:frent_jogja/widget/auth_input.dart';
-import 'package:frent_jogja/widget/button.dart';
+import '../../../modules/auth/auth_controller.dart';
+import '../../../utils/constants.dart';
+import '../../../utils/styles.dart';
+import '../../../widget/auth_input.dart';
+import '../../../widget/button.dart';
 import 'package:get/get.dart';
 
 class SignUpScreen extends StatelessWidget {
@@ -79,7 +79,15 @@ class SignUpScreen extends StatelessWidget {
                 const SizedBox(height: 34.0),
                 CustomButton(
                   text: 'Daftar',
-                  onPressed: () {},
+                  onPressed: () {
+                    controller.register(
+                      controller.nameSignUp.text,
+                      int.parse(controller.nikSignUp.text.trim()),
+                      int.parse(controller.waSignUp.text.trim()),
+                      controller.emailSignUp.text.trim(),
+                      controller.passwordSignUp.text.trim(),
+                    );
+                  },
                 ),
               ],
             ),
