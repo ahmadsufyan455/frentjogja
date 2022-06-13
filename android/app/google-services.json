@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "983398665272",
+    "project_id": "frent-b090c",
+    "storage_bucket": "frent-b090c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:983398665272:android:1cb5a67934492ee2716acd",
+        "android_client_info": {
+          "package_name": "com.example.frent_jogja"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "983398665272-o0kjlah6ali4828g44fabf2oe0cr9tr5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCn8jV0m4-yW9QM2Uz_OWHGytiszKK7ot0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "983398665272-o0kjlah6ali4828g44fabf2oe0cr9tr5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
