@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:frent_jogja/utils/styles.dart';
 import '../../models/user.dart';
 import '../../modules/auth/login/login_screen.dart';
 import '../../modules/dashboard/dashboard.dart';
@@ -53,11 +54,19 @@ class AuthController extends GetxController {
   }
 
   void login(String email, String password) async {
+    Get.dialog(
+      const Center(child: CircularProgressIndicator(color: kRed)),
+      barrierDismissible: false,
+    );
     try {
       await auth.signInWithEmailAndPassword(email: email, password: password);
     } catch (exception) {
-      Get.snackbar('Opps!', 'Your email or password is invalid');
+      Get.snackbar(
+        'Terjadi Kesalahan!',
+        'Email atau password yang kamu masukkan salah',
+      );
       log(exception.toString());
+      Navigator.of(Get.overlayContext!).pop();
     }
   }
 
@@ -74,6 +83,10 @@ class AuthController extends GetxController {
       phoneNumber: phoneNumber,
       email: email,
     );
+    Get.dialog(
+      const Center(child: CircularProgressIndicator(color: kRed)),
+      barrierDismissible: false,
+    );
     try {
       auth
           .createUserWithEmailAndPassword(email: email, password: password)
@@ -85,6 +98,7 @@ class AuthController extends GetxController {
       });
     } catch (exception) {
       log(exception.toString());
+      Navigator.of(Get.overlayContext!).pop();
     }
   }
 
