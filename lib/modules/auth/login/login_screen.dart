@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:frent_jogja/modules/auth/auth_controller.dart';
 import 'package:frent_jogja/modules/auth/register/sign_up_screen.dart';
+import 'package:frent_jogja/modules/auth/reset_password.dart';
 import 'package:frent_jogja/utils/constants.dart';
 import 'package:frent_jogja/utils/styles.dart';
 import 'package:frent_jogja/widget/auth_input.dart';
@@ -55,7 +56,7 @@ class LoginScreen extends StatelessWidget {
                 Align(
                   alignment: Alignment.centerLeft,
                   child: InkWell(
-                    onTap: () {},
+                    onTap: () => Get.toNamed(ResetPassword.routeName),
                     child: Text('Lupa password ?', style: kBodyRegular),
                   ),
                 ),

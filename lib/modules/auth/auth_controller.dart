@@ -15,12 +15,15 @@ class AuthController extends GetxController {
 
   late TextEditingController emailLogin;
   late TextEditingController passwordLogin;
+
   late TextEditingController nameSignUp;
   late TextEditingController nikSignUp;
   late TextEditingController waSignUp;
   late TextEditingController emailSignUp;
   late TextEditingController passwordSignUp;
   late TextEditingController confirmPasswordSignUp;
+
+  late TextEditingController emailResetPassword;
 
   RxBool isObscure = true.obs;
 
@@ -31,12 +34,15 @@ class AuthController extends GetxController {
     super.onInit();
     emailLogin = TextEditingController();
     passwordLogin = TextEditingController();
+
     nameSignUp = TextEditingController();
     nikSignUp = TextEditingController();
     waSignUp = TextEditingController();
     emailSignUp = TextEditingController();
     passwordSignUp = TextEditingController();
+
     confirmPasswordSignUp = TextEditingController();
+    emailResetPassword = TextEditingController();
 
     firebaseUser = Rx<User?>(auth.currentUser);
     firebaseUser.bindStream(auth.userChanges());
@@ -44,6 +50,13 @@ class AuthController extends GetxController {
   }
 
   void showPassword() => isObscure.value = !isObscure.value;
+
+  void showDialogPogressIndicator() {
+    Get.dialog(
+      const Center(child: CircularProgressIndicator(color: kRed)),
+      barrierDismissible: false,
+    );
+  }
 
   _setInitialScreen(User? user) {
     if (user == null) {
@@ -54,10 +67,7 @@ class AuthController extends GetxController {
   }
 
   void login(String email, String password) async {
-    Get.dialog(
-      const Center(child: CircularProgressIndicator(color: kRed)),
-      barrierDismissible: false,
-    );
+    showDialogPogressIndicator();
     try {
       await auth.signInWithEmailAndPassword(email: email, password: password);
     } catch (exception) {
@@ -83,10 +93,7 @@ class AuthController extends GetxController {
       phoneNumber: phoneNumber,
       email: email,
     );
-    Get.dialog(
-      const Center(child: CircularProgressIndicator(color: kRed)),
-      barrierDismissible: false,
-    );
+    showDialogPogressIndicator();
     try {
       auth
           .createUserWithEmailAndPassword(email: email, password: password)
@@ -106,15 +113,29 @@ class AuthController extends GetxController {
     await auth.signOut();
   }
 
+  void resetPassword(String email) async {
+    showDialogPogressIndicator();
+    try {
+      await auth.sendPasswordResetEmail(email: email);
+      Get.snackbar('Ganti password', 'Silahkan periksa email kamu');
+    } catch (exception) {
+      log(exception.toString());
+    }
+    Get.offAllNamed(LoginScreen.routeName);
+  }
+
   @override
   void onClose() {
     passwordLogin.dispose();
     passwordLogin.dispose();
+
     nameSignUp.dispose();
     nikSignUp.dispose();
     waSignUp.dispose();
     emailSignUp.dispose();
     passwordSignUp.dispose();
     confirmPasswordSignUp.dispose();
+
+    emailResetPassword.dispose();
   }
 }
