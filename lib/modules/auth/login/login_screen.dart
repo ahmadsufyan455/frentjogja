@@ -15,6 +15,10 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool inputCheck(String email, String password) {
+      return !(email.isEmpty || password.isEmpty);
+    }
+
     final controller = Get.put(AuthController());
     return Scaffold(
       body: SafeArea(
@@ -46,10 +50,18 @@ class LoginScreen extends StatelessWidget {
                 CustomButton(
                   text: 'Masuk',
                   onPressed: () {
-                    controller.login(
-                      controller.emailLogin.text.trim(),
-                      controller.passwordLogin.text.trim(),
-                    );
+                    if (inputCheck(controller.emailLogin.text.trim(),
+                        controller.passwordLogin.text.trim())) {
+                      controller.login(
+                        controller.emailLogin.text.trim(),
+                        controller.passwordLogin.text.trim(),
+                      );
+                    } else {
+                      Get.snackbar(
+                        'Kolom tidak boleh kosong',
+                        'Silahkan masukkan email atau password kamu terlebih dahulu',
+                      );
+                    }
                   },
                 ),
                 const SizedBox(height: 34.0),

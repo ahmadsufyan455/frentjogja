@@ -13,6 +13,16 @@ class SignUpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool inputCheck(String name, String idNumber, String phoneNumber,
+        String email, String password, String confirmPassword) {
+      return !(name.isEmpty ||
+          idNumber.isEmpty ||
+          phoneNumber.isEmpty ||
+          email.isEmpty ||
+          password.isEmpty ||
+          confirmPassword.isEmpty);
+    }
+
     final controller = Get.put(AuthController());
     return Scaffold(
       appBar: AppBar(
@@ -80,13 +90,26 @@ class SignUpScreen extends StatelessWidget {
                 CustomButton(
                   text: 'Daftar',
                   onPressed: () {
-                    controller.register(
-                      controller.nameSignUp.text,
-                      int.parse(controller.nikSignUp.text.trim()),
-                      int.parse(controller.waSignUp.text.trim()),
-                      controller.emailSignUp.text.trim(),
-                      controller.passwordSignUp.text.trim(),
-                    );
+                    if (inputCheck(
+                        controller.nameSignUp.text,
+                        controller.nikSignUp.text.trim(),
+                        controller.waSignUp.text.trim(),
+                        controller.emailSignUp.text.trim(),
+                        controller.passwordSignUp.text.trim(),
+                        controller.confirmPasswordSignUp.text.trim())) {
+                      controller.register(
+                        controller.nameSignUp.text,
+                        int.parse(controller.nikSignUp.text.trim()),
+                        int.parse(controller.waSignUp.text.trim()),
+                        controller.emailSignUp.text.trim(),
+                        controller.passwordSignUp.text.trim(),
+                      );
+                    } else {
+                      Get.snackbar(
+                        'Kolom tidak boleh kosong',
+                        'Silahkan isi semua kolom data diri terlebih dahulu',
+                      );
+                    }
                   },
                 ),
               ],

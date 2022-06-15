@@ -66,6 +66,9 @@ class AuthController extends GetxController {
     }
   }
 
+  /// this line handle firebase auth include login, register, logout,
+  /// and reset password
+
   void login(String email, String password) async {
     showDialogPogressIndicator();
     try {
