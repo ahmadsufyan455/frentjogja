@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 // app colors
 const kRed = Color(0xffEF5350);
+const kRedBar = Color(0xffF25754);
 const kWhite = Color(0xffFFFFFF);
 const kBlack = Color(0xff180A0A);
 
