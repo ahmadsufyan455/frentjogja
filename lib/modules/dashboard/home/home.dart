@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import '../../../modules/dashboard/home/home_controller.dart';
 import '../../../utils/styles.dart';
@@ -27,9 +28,23 @@ class HomeScreen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        'Hai, Ucup\nSelamat Datang',
-                        style: kHeadingRegular.copyWith(color: kWhite),
+                      FutureBuilder(
+                        future: controller.getUserName(),
+                        builder: (BuildContext context,
+                            AsyncSnapshot<DocumentSnapshot> snapshot) {
+                          if (snapshot.connectionState ==
+                              ConnectionState.done) {
+                            Map<String, dynamic> data =
+                                snapshot.data!.data() as Map<String, dynamic>;
+                            return Text(
+                              "Hai, ${data['name']}\nSelamat datang",
+                              style: kHeadingRegular.copyWith(
+                                color: kWhite,
+                              ),
+                            );
+                          }
+                          return Container();
+                        },
                       ),
                       Image.asset(
                         'assets/images/frent-logo.png',
