@@ -1,10 +1,20 @@
 import 'package:flutter/material.dart';
 
-import '../utils/constants.dart';
 import '../utils/styles.dart';
 
 class CardItem extends StatelessWidget {
-  const CardItem({Key? key}) : super(key: key);
+  const CardItem({
+    Key? key,
+    required this.image,
+    required this.type,
+    required this.price,
+    required this.status,
+  }) : super(key: key);
+
+  final String image;
+  final String type;
+  final double price;
+  final bool status;
 
   @override
   Widget build(BuildContext context) {
@@ -18,8 +28,8 @@ class CardItem extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Image.asset('$image/vario.png'),
-          Text('Sewa Honda Vario 125', style: kBodyBold),
+          Image.network(image),
+          Text('Sewa $type', style: kBodyBold),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -27,12 +37,14 @@ class CardItem extends StatelessWidget {
                 children: [
                   const Icon(Icons.price_change, color: kBlack),
                   const SizedBox(width: 10.0),
-                  Text('Rp.80.000/hari', style: kBodyRegular),
+                  Text('Rp.$price/hari', style: kBodyRegular),
                 ],
               ),
               Text(
-                'Tesedia',
-                style: kBodyRegular.copyWith(color: Colors.green),
+                status ? 'Tersedia' : 'Tidak Tersedia',
+                style: status
+                    ? kBodyRegular.copyWith(color: Colors.green)
+                    : kBodyRegular.copyWith(color: Colors.red),
               ),
             ],
           ),

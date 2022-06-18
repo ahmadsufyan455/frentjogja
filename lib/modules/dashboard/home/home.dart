@@ -76,9 +76,27 @@ class HomeScreen extends StatelessWidget {
             Expanded(
               child: ListView(
                 children: const [
-                  CardItem(),
-                  CardItem(),
-                  CardItem(),
+                  CardItem(
+                    image:
+                        'https://www.frentjogja.com/wp-content/uploads/2021/06/sewa-motor-honda-vario125.png',
+                    type: 'Honda Vario 125',
+                    price: 800000,
+                    status: true,
+                  ),
+                  CardItem(
+                    image:
+                        'https://www.frentjogja.com/wp-content/uploads/2021/06/sewa-motor-honda-nmax.png',
+                    type: 'Yamaha N-Max',
+                    price: 1100000,
+                    status: false,
+                  ),
+                  CardItem(
+                    image:
+                        'https://www.frentjogja.com/wp-content/uploads/2021/06/sewa-motor-honda-genio.png',
+                    type: 'Honda Genio',
+                    price: 750000,
+                    status: true,
+                  ),
                 ],
               ),
             ),
