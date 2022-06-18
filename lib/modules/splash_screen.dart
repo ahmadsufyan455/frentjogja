@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frent_jogja/modules/dashboard/dashboard.dart';
 import 'package:frent_jogja/utils/constants.dart';
 import 'package:frent_jogja/utils/styles.dart';
 import 'package:get/get.dart';
@@ -17,7 +18,11 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   Future<void> moveToNext() async {
     await Future.delayed(const Duration(milliseconds: 3000), () {});
-    Get.offNamed(LoginScreen.routeName);
+    if (auth.currentUser != null) {
+      Get.offAllNamed(Dashboard.routeName);
+    } else {
+      Get.offAllNamed(LoginScreen.routeName);
+    }
   }
 
   @override

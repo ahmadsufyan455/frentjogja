@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:frent_jogja/widget/card_item.dart';
 import '../../../modules/dashboard/home/home_controller.dart';
 import '../../../utils/styles.dart';
 import 'package:get/get.dart';
@@ -69,6 +70,15 @@ class HomeScreen extends StatelessWidget {
                       hintStyle: kBodyRegularHint,
                     ),
                   ),
+                ],
+              ),
+            ),
+            Expanded(
+              child: ListView(
+                children: const [
+                  CardItem(),
+                  CardItem(),
+                  CardItem(),
                 ],
               ),
             ),
