@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:frent_jogja/modules/auth/auth_controller.dart';
+import '../modules/auth/auth_controller.dart';
 import 'package:get/get.dart';
 
 import '../utils/styles.dart';

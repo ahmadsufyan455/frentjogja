@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:frent_jogja/modules/dashboard/dashboard.dart';
-import 'package:frent_jogja/utils/constants.dart';
-import 'package:frent_jogja/utils/styles.dart';
+import '../modules/dashboard/dashboard.dart';
+import '../utils/constants.dart';
+import '../utils/styles.dart';
 import 'package:get/get.dart';
 
 import 'auth/login/login_screen.dart';

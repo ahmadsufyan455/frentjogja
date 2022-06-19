@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:frent_jogja/utils/styles.dart';
+import '../../utils/styles.dart';
 import '../../models/user.dart';
 import '../../modules/auth/login/login_screen.dart';
 import '../../modules/dashboard/dashboard.dart';

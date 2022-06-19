@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:frent_jogja/modules/dashboard/booking/booking.dart';
-import 'package:frent_jogja/modules/dashboard/home/home.dart';
-import 'package:frent_jogja/modules/dashboard/profile/profile.dart';
-import 'package:frent_jogja/utils/styles.dart';
+import '../../modules/dashboard/booking/booking.dart';
+import '../../modules/dashboard/home/home.dart';
+import '../../modules/dashboard/profile/profile.dart';
+import '../../utils/styles.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({Key? key}) : super(key: key);

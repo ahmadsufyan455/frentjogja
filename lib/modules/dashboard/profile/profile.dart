@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:frent_jogja/modules/auth/auth_controller.dart';
-import 'package:frent_jogja/widget/button.dart';
-import 'package:get/instance_manager.dart';
+import '../../../modules/auth/auth_controller.dart';
+import '../../../widget/button.dart';
+import 'package:get/get.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);

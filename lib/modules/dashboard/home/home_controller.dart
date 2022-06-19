@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:frent_jogja/models/motor.dart';
-import 'package:frent_jogja/utils/constants.dart';
+import '../../../models/motor.dart';
+import '../../../utils/constants.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {

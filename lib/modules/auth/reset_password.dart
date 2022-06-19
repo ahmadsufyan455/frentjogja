@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:frent_jogja/modules/auth/auth_controller.dart';
-import 'package:frent_jogja/widget/auth_input.dart';
-import 'package:frent_jogja/widget/button.dart';
-import 'package:get/instance_manager.dart';
+import '../../modules/auth/auth_controller.dart';
+import '../../widget/auth_input.dart';
+import '../../widget/button.dart';
+import 'package:get/get.dart';
 
 import '../../utils/styles.dart';
 
