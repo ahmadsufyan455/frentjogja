@@ -6,6 +6,8 @@ const kRed = Color(0xffEF5350);
 const kRedBar = Color(0xffF25754);
 const kWhite = Color(0xffFFFFFF);
 const kBlack = Color(0xff180A0A);
+const kBlackDark = Color(0xFF424242);
+const kGrey = Color(0xFFC4C4C4);
 
 // text styles
 var kHeadingRegular = GoogleFonts.poppins(

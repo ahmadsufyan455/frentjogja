@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:frent_jogja/modules/detail/detail_screen.dart';
 import '../../../models/motor.dart';
 import '../../../widget/card_item.dart';
 import '../../../modules/dashboard/home/home_controller.dart';
@@ -80,11 +81,17 @@ class HomeScreen extends StatelessWidget {
                   itemCount: controller.motors.length,
                   itemBuilder: (context, index) {
                     final RxList<Motor> data = controller.motors;
-                    return CardItem(
-                      image: data[index].image,
-                      type: data[index].type,
-                      price: data[index].price,
-                      status: data[index].status,
+                    return InkWell(
+                      onTap: () => Get.toNamed(
+                        DetailScreen.routeName,
+                        arguments: data[index],
+                      ),
+                      child: CardItem(
+                        image: data[index].image,
+                        type: data[index].type,
+                        price: data[index].price,
+                        status: data[index].status,
+                      ),
                     );
                   },
                 ),

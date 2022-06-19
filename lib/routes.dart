@@ -1,5 +1,6 @@
-import 'package:frent_jogja/modules/auth/reset_password.dart';
-import 'package:frent_jogja/modules/dashboard/dashboard.dart';
+import '../modules/auth/reset_password.dart';
+import '../modules/dashboard/dashboard.dart';
+import '../modules/detail/detail_screen.dart';
 import 'package:get/get.dart';
 
 import 'modules/auth/login/login_screen.dart';
@@ -26,5 +27,9 @@ List<GetPage> routes = [
   GetPage(
     name: ResetPassword.routeName,
     page: () => const ResetPassword(),
+  ),
+  GetPage(
+    name: DetailScreen.routeName,
+    page: () => const DetailScreen(),
   ),
 ];
