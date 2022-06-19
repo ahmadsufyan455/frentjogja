@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:frent_jogja/utils/constants.dart';
+import 'package:frent_jogja/models/motor.dart';
 import 'package:frent_jogja/widget/card_item.dart';
 import '../../../modules/dashboard/home/home_controller.dart';
 import '../../../utils/styles.dart';
@@ -75,29 +75,19 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             Expanded(
-              child: StreamBuilder<QuerySnapshot>(
-                stream: firebaseFirestore.collection('MotorData').snapshots(),
-                builder: (BuildContext context,
-                    AsyncSnapshot<QuerySnapshot> snapshot) {
-                  if (!snapshot.hasData) {
-                    return const Center(
-                      child: CircularProgressIndicator(),
+              child: Obx(
+                () => ListView.builder(
+                  itemCount: controller.motors.length,
+                  itemBuilder: (context, index) {
+                    final RxList<Motor> data = controller.motors;
+                    return CardItem(
+                      image: data[index].image,
+                      type: data[index].type,
+                      price: data[index].price,
+                      status: data[index].status,
                     );
-                  } else {
-                    return ListView(
-                      children: snapshot.data!.docs.map((doc) {
-                        Map<String, dynamic> data =
-                            doc.data()! as Map<String, dynamic>;
-                        return CardItem(
-                          image: data['image'],
-                          type: data['type'],
-                          price: data['price'],
-                          status: data['status'],
-                        );
-                      }).toList(),
-                    );
-                  }
-                },
+                  },
+                ),
               ),
             ),
           ],

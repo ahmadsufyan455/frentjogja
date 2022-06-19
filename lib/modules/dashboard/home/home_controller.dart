@@ -1,15 +1,18 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:frent_jogja/models/motor.dart';
 import 'package:frent_jogja/utils/constants.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
   late TextEditingController searchController;
+  RxList<Motor> motors = <Motor>[].obs;
 
   @override
   void onInit() {
     super.onInit();
     searchController = TextEditingController();
+    motors.bindStream(listMotor());
   }
 
   @override
@@ -24,5 +27,24 @@ class HomeController extends GetxController {
       return firebaseFirestore.collection('UserData').doc(userId).get();
     }
     return null;
+  }
+
+  Stream<List<Motor>> listMotor() {
+    Stream<QuerySnapshot<Object?>>? stream =
+        firebaseFirestore.collection('MotorData').snapshots();
+
+    return stream.map((qShot) => qShot.docs.map(
+          (doc) {
+            Map<String, dynamic> data = doc.data()! as Map<String, dynamic>;
+            return Motor(
+              image: data['image'],
+              type: data['type'],
+              description: data['description'],
+              price: data['price'],
+              quantity: data['quantity'],
+              status: data['status'],
+            );
+          },
+        ).toList());
   }
 }
