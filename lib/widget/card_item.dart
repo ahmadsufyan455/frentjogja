@@ -13,7 +13,7 @@ class CardItem extends StatelessWidget {
 
   final String image;
   final String type;
-  final double price;
+  final int price;
   final bool status;
 
   @override

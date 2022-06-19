@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:frent_jogja/utils/constants.dart';
 import 'package:frent_jogja/widget/card_item.dart';
 import '../../../modules/dashboard/home/home_controller.dart';
 import '../../../utils/styles.dart';
@@ -74,30 +75,29 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             Expanded(
-              child: ListView(
-                children: const [
-                  CardItem(
-                    image:
-                        'https://www.frentjogja.com/wp-content/uploads/2021/06/sewa-motor-honda-vario125.png',
-                    type: 'Honda Vario 125',
-                    price: 800000,
-                    status: true,
-                  ),
-                  CardItem(
-                    image:
-                        'https://www.frentjogja.com/wp-content/uploads/2021/06/sewa-motor-honda-nmax.png',
-                    type: 'Yamaha N-Max',
-                    price: 1100000,
-                    status: false,
-                  ),
-                  CardItem(
-                    image:
-                        'https://www.frentjogja.com/wp-content/uploads/2021/06/sewa-motor-honda-genio.png',
-                    type: 'Honda Genio',
-                    price: 750000,
-                    status: true,
-                  ),
-                ],
+              child: StreamBuilder<QuerySnapshot>(
+                stream: firebaseFirestore.collection('MotorData').snapshots(),
+                builder: (BuildContext context,
+                    AsyncSnapshot<QuerySnapshot> snapshot) {
+                  if (!snapshot.hasData) {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  } else {
+                    return ListView(
+                      children: snapshot.data!.docs.map((doc) {
+                        Map<String, dynamic> data =
+                            doc.data()! as Map<String, dynamic>;
+                        return CardItem(
+                          image: data['image'],
+                          type: data['type'],
+                          price: data['price'],
+                          status: data['status'],
+                        );
+                      }).toList(),
+                    );
+                  }
+                },
               ),
             ),
           ],
