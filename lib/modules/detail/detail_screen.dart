@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../../modules/form/booking_form.dart';
+import '../form/empty_form.dart';
 import '../../utils/constants.dart';
 import '../../models/motor.dart';
 import 'package:get/get.dart';
@@ -73,7 +75,11 @@ class DetailScreen extends StatelessWidget {
                     style: kBodyBold.copyWith(color: kGrey),
                   ),
                   InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      data.status
+                          ? Get.toNamed(BookingForm.routeName)
+                          : Get.toNamed(EmptyForm.routeName);
+                    },
                     child: Container(
                       padding: const EdgeInsets.symmetric(
                         horizontal: 24.0,

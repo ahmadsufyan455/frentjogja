@@ -1,3 +1,6 @@
+import '../modules/form/booking_form.dart';
+import '../modules/form/empty_form.dart';
+
 import '../modules/auth/reset_password.dart';
 import '../modules/dashboard/dashboard.dart';
 import '../modules/detail/detail_screen.dart';
@@ -31,5 +34,13 @@ List<GetPage> routes = [
   GetPage(
     name: DetailScreen.routeName,
     page: () => const DetailScreen(),
+  ),
+  GetPage(
+    name: BookingForm.routeName,
+    page: () => const BookingForm(),
+  ),
+  GetPage(
+    name: EmptyForm.routeName,
+    page: () => const EmptyForm(),
   ),
 ];
