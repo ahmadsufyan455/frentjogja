@@ -1,4 +1,3 @@
-import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:frent_jogja/modules/form/form_controller.dart';
 import 'package:frent_jogja/widget/button.dart';
@@ -125,16 +124,7 @@ class BookingForm extends StatelessWidget {
                 CustomButton(
                   text: 'Kirim Formulir',
                   onPressed: () {
-                    print('nama: ${controller.nameController.text}');
-                    print('NIK: ${controller.idNumberController.text}');
-                    print('WA: ${controller.phoneController.text}');
-                    print('email: ${controller.emailController.text}');
-                    print('alamat: ${controller.addressController.text}');
-                    print('startDate: ${controller.startDate.text}');
-                    print('endDate: ${controller.endDate.text}');
-                    print('pick up: ${controller.pickUpLocation}');
-                    print('delivery: ${controller.deliveryLocation}');
-                    print('Keperluan: ${controller.noteController.text}');
+                    // do action
                   },
                 ),
               ],
