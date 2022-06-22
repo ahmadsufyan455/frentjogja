@@ -110,9 +110,37 @@ class BookingForm extends StatelessWidget {
                 ),
                 const SizedBox(height: 16.0),
                 const DropDownInputPickUp(),
+                Obx(
+                  () => controller.pickUpLocation.value == 'Lainnya'
+                      ? Container(
+                          margin: const EdgeInsets.only(top: 16.0),
+                          child: FormInput(
+                            inputAction: TextInputAction.newline,
+                            inputType: TextInputType.multiline,
+                            controller: controller.otherPickUp,
+                            maxLines: 3,
+                            hintText: 'Sebutkan',
+                          ),
+                        )
+                      : Container(),
+                ),
                 const SizedBox(height: 16.0),
                 const DropDownInputDelivery(),
                 const SizedBox(height: 16.0),
+                Obx(
+                  () => controller.deliveryLocation.value == 'Lainnya'
+                      ? Container(
+                          margin: const EdgeInsets.only(bottom: 16.0),
+                          child: FormInput(
+                            inputAction: TextInputAction.newline,
+                            inputType: TextInputType.multiline,
+                            controller: controller.otherDelivery,
+                            maxLines: 3,
+                            hintText: 'Sebutkan',
+                          ),
+                        )
+                      : Container(),
+                ),
                 FormInput(
                   inputAction: TextInputAction.newline,
                   inputType: TextInputType.multiline,

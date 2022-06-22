@@ -11,6 +11,8 @@ class FormController extends GetxController {
   late TextEditingController noteController;
   late TextEditingController startDate;
   late TextEditingController endDate;
+  late TextEditingController otherPickUp;
+  late TextEditingController otherDelivery;
 
   Rx<DateTime> selectedStartDate = DateTime.now().obs;
   Rx<DateTime> selectedEndDate = DateTime.now().obs;
@@ -64,6 +66,8 @@ class FormController extends GetxController {
     noteController = TextEditingController();
     startDate = TextEditingController();
     endDate = TextEditingController();
+    otherPickUp = TextEditingController();
+    otherDelivery = TextEditingController();
   }
 
   @override
@@ -76,5 +80,7 @@ class FormController extends GetxController {
     noteController.dispose();
     startDate.dispose();
     endDate.dispose();
+    otherPickUp.dispose();
+    otherDelivery.dispose();
   }
 }
