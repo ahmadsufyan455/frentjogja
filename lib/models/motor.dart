@@ -1,4 +1,5 @@
 class Motor {
+  final String id;
   final String image;
   final String type;
   final String description;
@@ -7,6 +8,7 @@ class Motor {
   final bool status;
 
   Motor({
+    required this.id,
     required this.image,
     required this.type,
     required this.description,

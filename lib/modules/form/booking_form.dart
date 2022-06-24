@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frent_jogja/models/motor.dart';
 import 'package:frent_jogja/modules/form/form_controller.dart';
 import 'package:frent_jogja/widget/button.dart';
 import '../../widget/form_input.dart';
@@ -14,6 +15,31 @@ class BookingForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(FormController());
+
+    bool inputCheck(
+      String name,
+      String idNumber,
+      String phoneNumber,
+      String email,
+      String address,
+      String startDate,
+      String endDate,
+      String pickUpLocation,
+      String deliveryLocation,
+    ) {
+      return !(name.isEmpty ||
+          idNumber.isEmpty ||
+          phoneNumber.isEmpty ||
+          email.isEmpty ||
+          address.isEmpty ||
+          startDate.isEmpty ||
+          endDate.isEmpty ||
+          pickUpLocation.isEmpty ||
+          deliveryLocation.isEmpty);
+    }
+
+    final Motor data = Get.arguments;
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kRed,
@@ -41,28 +67,28 @@ class BookingForm extends StatelessWidget {
                   inputAction: TextInputAction.next,
                   inputType: TextInputType.name,
                   controller: controller.nameController,
-                  hintText: 'Name',
+                  hintText: 'Name*',
                 ),
                 const SizedBox(height: 16.0),
                 FormInput(
                   inputAction: TextInputAction.next,
                   inputType: TextInputType.number,
                   controller: controller.idNumberController,
-                  hintText: 'NIK',
+                  hintText: 'NIK*',
                 ),
                 const SizedBox(height: 16.0),
                 FormInput(
                   inputAction: TextInputAction.next,
                   inputType: TextInputType.number,
                   controller: controller.phoneController,
-                  hintText: 'No Whatsapp',
+                  hintText: 'No Whatsapp*',
                 ),
                 const SizedBox(height: 16.0),
                 FormInput(
                   inputAction: TextInputAction.next,
                   inputType: TextInputType.emailAddress,
                   controller: controller.emailController,
-                  hintText: 'Email',
+                  hintText: 'Email*',
                 ),
                 const SizedBox(height: 16.0),
                 FormInput(
@@ -70,16 +96,16 @@ class BookingForm extends StatelessWidget {
                   inputType: TextInputType.multiline,
                   controller: controller.addressController,
                   maxLines: 4,
-                  hintText: 'Alamat sesuai KTP',
+                  hintText: 'Alamat sesuai KTP*',
                 ),
                 const SizedBox(height: 16.0),
                 Row(
                   children: [
                     Expanded(
                       child: FormInput(
-                        hintText: 'Tanggal mulai sewa',
+                        hintText: 'Tanggal mulai sewa*',
                         isEnable: false,
-                        controller: controller.startDate,
+                        controller: controller.startDateController,
                       ),
                     ),
                     const SizedBox(width: 24.0),
@@ -95,9 +121,9 @@ class BookingForm extends StatelessWidget {
                   children: [
                     Expanded(
                       child: FormInput(
-                        hintText: 'Tanggal selesai sewa',
+                        hintText: 'Tanggal selesai sewa*',
                         isEnable: false,
-                        controller: controller.endDate,
+                        controller: controller.endDateController,
                       ),
                     ),
                     const SizedBox(width: 24.0),
@@ -117,9 +143,9 @@ class BookingForm extends StatelessWidget {
                           child: FormInput(
                             inputAction: TextInputAction.newline,
                             inputType: TextInputType.multiline,
-                            controller: controller.otherPickUp,
+                            controller: controller.otherPickUpController,
                             maxLines: 3,
-                            hintText: 'Sebutkan',
+                            hintText: 'Sebutkan*',
                           ),
                         )
                       : Container(),
@@ -134,9 +160,9 @@ class BookingForm extends StatelessWidget {
                           child: FormInput(
                             inputAction: TextInputAction.newline,
                             inputType: TextInputType.multiline,
-                            controller: controller.otherDelivery,
+                            controller: controller.otherDeliveryController,
                             maxLines: 3,
-                            hintText: 'Sebutkan',
+                            hintText: 'Sebutkan*',
                           ),
                         )
                       : Container(),
@@ -152,7 +178,54 @@ class BookingForm extends StatelessWidget {
                 CustomButton(
                   text: 'Kirim Formulir',
                   onPressed: () {
-                    // do action
+                    if (inputCheck(
+                      controller.nameController.text,
+                      controller.idNumberController.text.trim(),
+                      controller.phoneController.text.trim(),
+                      controller.emailController.text.trim(),
+                      controller.addressController.text.trim(),
+                      controller.startDateController.text.trim(),
+                      controller.endDateController.text.trim(),
+                      controller.pickUpLocation.value,
+                      controller.deliveryLocation.value,
+                    )) {
+                      controller.updateQuantity(data.id);
+                      controller.submitFormUser(
+                        controller.nameController.text,
+                        int.parse(controller.idNumberController.text.trim()),
+                        int.parse(controller.phoneController.text.trim()),
+                        controller.emailController.text.trim(),
+                        controller.addressController.text.trim(),
+                        controller.startDateController.text.trim(),
+                        controller.endDateController.text.trim(),
+                        controller.pickUpLocation.value,
+                        controller.deliveryLocation.value,
+                        controller.noteController.text,
+                        data.type,
+                      );
+                      controller.submitFormAdmin(
+                        controller.nameController.text,
+                        int.parse(controller.idNumberController.text.trim()),
+                        int.parse(controller.phoneController.text.trim()),
+                        controller.emailController.text.trim(),
+                        controller.addressController.text.trim(),
+                        controller.startDateController.text.trim(),
+                        controller.endDateController.text.trim(),
+                        controller.pickUpLocation.value,
+                        controller.deliveryLocation.value,
+                        controller.noteController.text,
+                        data.type,
+                      );
+                      Get.snackbar(
+                        'Berhasil',
+                        'Berhasil melakukan submit!',
+                      );
+                    } else {
+                      Get.snackbar(
+                        'Terjadi Kesalahan',
+                        'Silahkan lengkapi dulu semua formnya ya!',
+                      );
+                    }
                   },
                 ),
               ],

@@ -67,7 +67,7 @@ class DropDownInputPickUp extends StatelessWidget {
       ),
       isExpanded: true,
       hint: Text(
-        'Lokasi penjemputan',
+        'Lokasi penjemputan*',
         style: kBodyRegularHint,
       ),
       icon: const Icon(
@@ -89,7 +89,7 @@ class DropDownInputPickUp extends StatelessWidget {
           )
           .toList(),
       validator: (value) {
-        if (value == null) return 'Lokasi penjemputan';
+        if (value == null) return 'Lokasi penjemputan*';
         return null;
       },
       onChanged: (value) {
@@ -125,7 +125,7 @@ class DropDownInputDelivery extends StatelessWidget {
       ),
       isExpanded: true,
       hint: Text(
-        'Lokasi pengantaran',
+        'Lokasi pengantaran*',
         style: kBodyRegularHint,
       ),
       icon: const Icon(
@@ -147,7 +147,7 @@ class DropDownInputDelivery extends StatelessWidget {
           )
           .toList(),
       validator: (value) {
-        if (value == null) return 'Lokasi pengantaran';
+        if (value == null) return 'Lokasi pengantaran*';
         return null;
       },
       onChanged: (value) {

@@ -77,7 +77,10 @@ class DetailScreen extends StatelessWidget {
                   InkWell(
                     onTap: () {
                       data.status
-                          ? Get.toNamed(BookingForm.routeName)
+                          ? Get.toNamed(
+                              BookingForm.routeName,
+                              arguments: data,
+                            )
                           : Get.toNamed(EmptyForm.routeName);
                     },
                     child: Container(

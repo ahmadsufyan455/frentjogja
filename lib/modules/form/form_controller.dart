@@ -1,3 +1,7 @@
+import 'dart:developer';
+
+import 'package:frent_jogja/models/booking.dart';
+import 'package:frent_jogja/utils/constants.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -9,10 +13,10 @@ class FormController extends GetxController {
   late TextEditingController emailController;
   late TextEditingController addressController;
   late TextEditingController noteController;
-  late TextEditingController startDate;
-  late TextEditingController endDate;
-  late TextEditingController otherPickUp;
-  late TextEditingController otherDelivery;
+  late TextEditingController startDateController;
+  late TextEditingController endDateController;
+  late TextEditingController otherPickUpController;
+  late TextEditingController otherDeliveryController;
 
   Rx<DateTime> selectedStartDate = DateTime.now().obs;
   Rx<DateTime> selectedEndDate = DateTime.now().obs;
@@ -30,7 +34,8 @@ class FormController extends GetxController {
     );
     if (picked != null) {
       selectedStartDate.value = picked;
-      startDate.text = DateFormat.yMd().format(selectedStartDate.value);
+      startDateController.text =
+          DateFormat.yMd().format(selectedStartDate.value);
     }
   }
 
@@ -45,7 +50,7 @@ class FormController extends GetxController {
     if (picked != null) {
       selectedEndDate.value = picked;
       if (selectedEndDate.value.isAfter(selectedStartDate.value)) {
-        endDate.text = DateFormat.yMd().format(selectedEndDate.value);
+        endDateController.text = DateFormat.yMd().format(selectedEndDate.value);
       } else {
         Get.snackbar(
           'Terjadi Kesalahan',
@@ -64,10 +69,95 @@ class FormController extends GetxController {
     emailController = TextEditingController();
     addressController = TextEditingController();
     noteController = TextEditingController();
-    startDate = TextEditingController();
-    endDate = TextEditingController();
-    otherPickUp = TextEditingController();
-    otherDelivery = TextEditingController();
+    startDateController = TextEditingController();
+    endDateController = TextEditingController();
+    otherPickUpController = TextEditingController();
+    otherDeliveryController = TextEditingController();
+  }
+
+  void submitFormUser(
+    String name,
+    int idNumber,
+    int phoneNumber,
+    String email,
+    String address,
+    String startDate,
+    String endDate,
+    String pickUpLocation,
+    String deliveryLocation,
+    String? note,
+    String motorType,
+  ) {
+    final bookingData = Booking(
+      name: name,
+      idNumber: idNumber,
+      phoneNumber: phoneNumber,
+      email: email,
+      address: address,
+      startDate: startDate,
+      endDate: endDate,
+      pickUpLocation: pickUpLocation,
+      deliveryLocation: deliveryLocation,
+      note: note,
+      motorType: motorType,
+    );
+
+    try {
+      firebaseFirestore
+          .collection('UserData')
+          .doc(auth.currentUser!.uid)
+          .collection('BookingData')
+          .doc()
+          .set(bookingData.toJson());
+    } catch (e) {
+      log(e.toString());
+    }
+  }
+
+  void submitFormAdmin(
+    String name,
+    int idNumber,
+    int phoneNumber,
+    String email,
+    String address,
+    String startDate,
+    String endDate,
+    String pickUpLocation,
+    String deliveryLocation,
+    String? note,
+    String motorType,
+  ) {
+    final bookingData = Booking(
+      name: name,
+      idNumber: idNumber,
+      phoneNumber: phoneNumber,
+      email: email,
+      address: address,
+      startDate: startDate,
+      endDate: endDate,
+      pickUpLocation: pickUpLocation,
+      deliveryLocation: deliveryLocation,
+      note: note,
+      motorType: motorType,
+    );
+
+    try {
+      firebaseFirestore
+          .collection('BookingData')
+          .doc()
+          .set(bookingData.toJson());
+    } catch (e) {
+      log(e.toString());
+    }
+  }
+
+  void updateQuantity(String id) {
+    firebaseFirestore.collection('MotorData').doc(id).get().then((value) {
+      firebaseFirestore.collection('MotorData').doc(id).update({
+        'quantity': value['quantity'] == 0 ? 0 : value['quantity'] - 1,
+        'status': value['quantity'] > 1 ? true : false,
+      });
+    });
   }
 
   @override
@@ -78,9 +168,9 @@ class FormController extends GetxController {
     emailController.dispose();
     addressController.dispose();
     noteController.dispose();
-    startDate.dispose();
-    endDate.dispose();
-    otherPickUp.dispose();
-    otherDelivery.dispose();
+    startDateController.dispose();
+    endDateController.dispose();
+    otherPickUpController.dispose();
+    otherDeliveryController.dispose();
   }
 }

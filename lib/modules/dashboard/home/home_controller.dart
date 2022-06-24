@@ -37,6 +37,7 @@ class HomeController extends GetxController {
           (doc) {
             Map<String, dynamic> data = doc.data()! as Map<String, dynamic>;
             return Motor(
+              id: data['id'],
               image: data['image'],
               type: data['type'],
               description: data['description'],
