@@ -24,6 +24,8 @@ class FormController extends GetxController {
   RxString pickUpLocation = ''.obs;
   RxString deliveryLocation = ''.obs;
 
+  int bookingId = DateTime.now().millisecondsSinceEpoch;
+
   Future selectStartDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
       context: context,
@@ -107,7 +109,7 @@ class FormController extends GetxController {
           .collection('UserData')
           .doc(auth.currentUser!.uid)
           .collection('BookingData')
-          .doc()
+          .doc(bookingId.toString())
           .set(bookingData.toJson());
     } catch (e) {
       log(e.toString());
@@ -144,7 +146,7 @@ class FormController extends GetxController {
     try {
       firebaseFirestore
           .collection('BookingData')
-          .doc()
+          .doc(bookingId.toString())
           .set(bookingData.toJson());
     } catch (e) {
       log(e.toString());

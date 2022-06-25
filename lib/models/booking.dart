@@ -10,6 +10,7 @@ class Booking {
   final String deliveryLocation;
   final String? note;
   final String motorType;
+  bool isConfirm;
 
   Booking({
     required this.name,
@@ -23,6 +24,7 @@ class Booking {
     required this.deliveryLocation,
     this.note,
     required this.motorType,
+    this.isConfirm = false,
   });
 
   Map<String, dynamic> toJson() {
@@ -38,6 +40,7 @@ class Booking {
     data['deliveryLocation'] = deliveryLocation;
     data['note'] = note;
     data['motorType'] = motorType;
+    data['isConfirm'] = isConfirm;
 
     return data;
   }
