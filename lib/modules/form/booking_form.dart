@@ -221,7 +221,7 @@ class BookingForm extends StatelessWidget {
                         'Berhasil',
                         'Berhasil melakukan submit!',
                       );
-                      Get.toNamed(BookingSucess.routeName);
+                      Get.offNamed(BookingSucess.routeName);
                     } else {
                       Get.snackbar(
                         'Terjadi Kesalahan',

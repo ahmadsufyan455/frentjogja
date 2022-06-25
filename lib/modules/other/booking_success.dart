@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frent_jogja/modules/dashboard/dashboard.dart';
 import 'package:frent_jogja/modules/other/payment.dart';
 import 'package:frent_jogja/utils/styles.dart';
 import 'package:frent_jogja/widget/button.dart';
@@ -32,7 +33,10 @@ class BookingSucess extends StatelessWidget {
                   Get.toNamed(Payment.routeName);
                 }),
             const SizedBox(height: 16.0),
-            CustomButton(text: 'Status Pesanan', onPressed: () {}),
+            CustomButton(
+              text: 'Beranda',
+              onPressed: () => Get.offAllNamed(Dashboard.routeName),
+            ),
           ],
         ),
       ),

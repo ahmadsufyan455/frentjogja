@@ -29,10 +29,7 @@ class EmptyForm extends StatelessWidget {
               const SizedBox(height: 34.0),
               CustomButton(
                 text: 'Pilih motor lain',
-                onPressed: () => Get.offNamedUntil(
-                  Dashboard.routeName,
-                  (route) => false,
-                ),
+                onPressed: () => Get.offAllNamed(Dashboard.routeName),
               ),
             ],
           ),
