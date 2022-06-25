@@ -179,55 +179,55 @@ class BookingForm extends StatelessWidget {
                 CustomButton(
                   text: 'Kirim Formulir',
                   onPressed: () {
-                    Get.toNamed(BookingSucess.routeName);
-                    // if (inputCheck(
-                    //   controller.nameController.text,
-                    //   controller.idNumberController.text.trim(),
-                    //   controller.phoneController.text.trim(),
-                    //   controller.emailController.text.trim(),
-                    //   controller.addressController.text.trim(),
-                    //   controller.startDateController.text.trim(),
-                    //   controller.endDateController.text.trim(),
-                    //   controller.pickUpLocation.value,
-                    //   controller.deliveryLocation.value,
-                    // )) {
-                    //   controller.updateQuantity(data.id);
-                    //   controller.submitFormUser(
-                    //     controller.nameController.text,
-                    //     int.parse(controller.idNumberController.text.trim()),
-                    //     int.parse(controller.phoneController.text.trim()),
-                    //     controller.emailController.text.trim(),
-                    //     controller.addressController.text.trim(),
-                    //     controller.startDateController.text.trim(),
-                    //     controller.endDateController.text.trim(),
-                    //     controller.pickUpLocation.value,
-                    //     controller.deliveryLocation.value,
-                    //     controller.noteController.text,
-                    //     data.type,
-                    //   );
-                    //   controller.submitFormAdmin(
-                    //     controller.nameController.text,
-                    //     int.parse(controller.idNumberController.text.trim()),
-                    //     int.parse(controller.phoneController.text.trim()),
-                    //     controller.emailController.text.trim(),
-                    //     controller.addressController.text.trim(),
-                    //     controller.startDateController.text.trim(),
-                    //     controller.endDateController.text.trim(),
-                    //     controller.pickUpLocation.value,
-                    //     controller.deliveryLocation.value,
-                    //     controller.noteController.text,
-                    //     data.type,
-                    //   );
-                    //   Get.snackbar(
-                    //     'Berhasil',
-                    //     'Berhasil melakukan submit!',
-                    //   );
-                    // } else {
-                    //   Get.snackbar(
-                    //     'Terjadi Kesalahan',
-                    //     'Silahkan lengkapi dulu semua formnya ya!',
-                    //   );
-                    // }
+                    if (inputCheck(
+                      controller.nameController.text,
+                      controller.idNumberController.text.trim(),
+                      controller.phoneController.text.trim(),
+                      controller.emailController.text.trim(),
+                      controller.addressController.text.trim(),
+                      controller.startDateController.text.trim(),
+                      controller.endDateController.text.trim(),
+                      controller.pickUpLocation.value,
+                      controller.deliveryLocation.value,
+                    )) {
+                      controller.updateQuantity(data.id);
+                      controller.submitFormUser(
+                        controller.nameController.text,
+                        int.parse(controller.idNumberController.text.trim()),
+                        int.parse(controller.phoneController.text.trim()),
+                        controller.emailController.text.trim(),
+                        controller.addressController.text.trim(),
+                        controller.startDateController.text.trim(),
+                        controller.endDateController.text.trim(),
+                        controller.pickUpLocation.value,
+                        controller.deliveryLocation.value,
+                        controller.noteController.text,
+                        data.type,
+                      );
+                      controller.submitFormAdmin(
+                        controller.nameController.text,
+                        int.parse(controller.idNumberController.text.trim()),
+                        int.parse(controller.phoneController.text.trim()),
+                        controller.emailController.text.trim(),
+                        controller.addressController.text.trim(),
+                        controller.startDateController.text.trim(),
+                        controller.endDateController.text.trim(),
+                        controller.pickUpLocation.value,
+                        controller.deliveryLocation.value,
+                        controller.noteController.text,
+                        data.type,
+                      );
+                      Get.snackbar(
+                        'Berhasil',
+                        'Berhasil melakukan submit!',
+                      );
+                      Get.toNamed(BookingSucess.routeName);
+                    } else {
+                      Get.snackbar(
+                        'Terjadi Kesalahan',
+                        'Silahkan lengkapi dulu semua formnya ya!',
+                      );
+                    }
                   },
                 ),
               ],
