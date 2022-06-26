@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:frent_jogja/utils/constants.dart';
 import 'package:frent_jogja/widget/payment_card.dart';
 
 import '../../utils/styles.dart';

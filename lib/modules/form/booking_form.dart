@@ -3,7 +3,6 @@ import 'package:frent_jogja/models/booking.dart';
 import 'package:frent_jogja/models/motor.dart';
 import 'package:frent_jogja/modules/form/detail_form.dart';
 import 'package:frent_jogja/modules/form/form_controller.dart';
-import 'package:frent_jogja/modules/other/booking_success.dart';
 import 'package:frent_jogja/widget/button.dart';
 import '../../widget/form_input.dart';
 import 'package:get/get.dart';

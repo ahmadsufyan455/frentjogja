@@ -7,8 +7,6 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import '../../utils/styles.dart';
-
 class FormController extends GetxController {
   late TextEditingController nameController;
   late TextEditingController idNumberController;
