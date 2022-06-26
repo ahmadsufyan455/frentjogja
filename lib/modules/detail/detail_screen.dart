@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../modules/form/booking_form.dart';
-import '../form/empty_form.dart';
+import '../other/empty_form.dart';
 import '../../utils/constants.dart';
 import '../../models/motor.dart';
 import 'package:get/get.dart';

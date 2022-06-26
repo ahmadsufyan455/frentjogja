@@ -4,7 +4,7 @@ import 'package:frent_jogja/modules/other/payment.dart';
 import '../modules/other/booking_success.dart';
 
 import '../modules/form/booking_form.dart';
-import '../modules/form/empty_form.dart';
+import 'modules/other/empty_form.dart';
 
 import '../modules/auth/reset_password.dart';
 import '../modules/dashboard/dashboard.dart';
