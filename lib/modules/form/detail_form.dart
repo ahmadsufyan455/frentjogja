@@ -27,6 +27,17 @@ class DetailForm extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
+            Padding(
+              padding: const EdgeInsets.only(
+                top: 16.0,
+                left: 16.0,
+                right: 16.0,
+              ),
+              child: Text(
+                'Berikut adalah detail pesanan kamu, pastikan tidak ada data yang salah ya!',
+                style: kBodyRegular,
+              ),
+            ),
             Container(
               margin: const EdgeInsets.all(16.0),
               padding: const EdgeInsets.all(16.0),
