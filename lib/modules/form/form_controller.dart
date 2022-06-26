@@ -1,10 +1,13 @@
 import 'dart:developer';
 
 import 'package:frent_jogja/models/booking.dart';
+import 'package:frent_jogja/modules/other/booking_success.dart';
 import 'package:frent_jogja/utils/constants.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+
+import '../../utils/styles.dart';
 
 class FormController extends GetxController {
   late TextEditingController nameController;
@@ -103,7 +106,6 @@ class FormController extends GetxController {
       note: note,
       motorType: motorType,
     );
-
     try {
       firebaseFirestore
           .collection('UserData')
@@ -111,6 +113,7 @@ class FormController extends GetxController {
           .collection('BookingData')
           .doc(bookingId.toString())
           .set(bookingData.toJson());
+      Get.toNamed(BookingSucess.routeName);
     } catch (e) {
       log(e.toString());
     }

@@ -1,3 +1,4 @@
+import 'package:frent_jogja/modules/form/detail_form.dart';
 import 'package:frent_jogja/modules/other/payment.dart';
 
 import '../modules/other/booking_success.dart';
@@ -54,5 +55,9 @@ List<GetPage> routes = [
   GetPage(
     name: Payment.routeName,
     page: () => const Payment(),
+  ),
+  GetPage(
+    name: DetailForm.routeName,
+    page: () => const DetailForm(),
   ),
 ];

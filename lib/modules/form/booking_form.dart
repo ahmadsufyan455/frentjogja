@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:frent_jogja/models/booking.dart';
 import 'package:frent_jogja/models/motor.dart';
+import 'package:frent_jogja/modules/form/detail_form.dart';
 import 'package:frent_jogja/modules/form/form_controller.dart';
 import 'package:frent_jogja/modules/other/booking_success.dart';
 import 'package:frent_jogja/widget/button.dart';
@@ -39,7 +41,8 @@ class BookingForm extends StatelessWidget {
           deliveryLocation.isEmpty);
     }
 
-    final Motor data = Get.arguments;
+    final Motor motorData = Get.arguments;
+    Booking bookingData;
 
     return Scaffold(
       appBar: AppBar(
@@ -177,7 +180,7 @@ class BookingForm extends StatelessWidget {
                 ),
                 const SizedBox(height: 24.0),
                 CustomButton(
-                  text: 'Kirim Formulir',
+                  text: 'Selanjutnya',
                   onPressed: () {
                     if (inputCheck(
                       controller.nameController.text,
@@ -190,38 +193,28 @@ class BookingForm extends StatelessWidget {
                       controller.pickUpLocation.value,
                       controller.deliveryLocation.value,
                     )) {
-                      controller.updateQuantity(data.id);
-                      controller.submitFormUser(
-                        controller.nameController.text,
-                        int.parse(controller.idNumberController.text.trim()),
-                        int.parse(controller.phoneController.text.trim()),
-                        controller.emailController.text.trim(),
-                        controller.addressController.text.trim(),
-                        controller.startDateController.text.trim(),
-                        controller.endDateController.text.trim(),
-                        controller.pickUpLocation.value,
-                        controller.deliveryLocation.value,
-                        controller.noteController.text,
-                        data.type,
+                      bookingData = Booking(
+                        name: controller.nameController.text,
+                        idNumber: int.parse(
+                            controller.idNumberController.text.trim()),
+                        phoneNumber:
+                            int.parse(controller.phoneController.text.trim()),
+                        email: controller.emailController.text.trim(),
+                        address: controller.addressController.text.trim(),
+                        startDate: controller.startDateController.text.trim(),
+                        endDate: controller.endDateController.text.trim(),
+                        pickUpLocation: controller.pickUpLocation.value,
+                        deliveryLocation: controller.deliveryLocation.value,
+                        note: controller.noteController.text,
+                        motorType: motorData.type,
                       );
-                      controller.submitFormAdmin(
-                        controller.nameController.text,
-                        int.parse(controller.idNumberController.text.trim()),
-                        int.parse(controller.phoneController.text.trim()),
-                        controller.emailController.text.trim(),
-                        controller.addressController.text.trim(),
-                        controller.startDateController.text.trim(),
-                        controller.endDateController.text.trim(),
-                        controller.pickUpLocation.value,
-                        controller.deliveryLocation.value,
-                        controller.noteController.text,
-                        data.type,
+                      Get.toNamed(
+                        DetailForm.routeName,
+                        arguments: [
+                          {'booking': bookingData},
+                          {'motor': motorData},
+                        ],
                       );
-                      Get.snackbar(
-                        'Berhasil',
-                        'Berhasil melakukan submit!',
-                      );
-                      Get.offNamed(BookingSucess.routeName);
                     } else {
                       Get.snackbar(
                         'Terjadi Kesalahan',
