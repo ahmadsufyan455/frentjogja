@@ -37,8 +37,15 @@ class FormController extends GetxController {
     );
     if (picked != null) {
       selectedStartDate.value = picked;
-      startDateController.text =
-          DateFormat.yMd().format(selectedStartDate.value);
+      if (selectedStartDate.value.isAfter(DateTime.now())) {
+        startDateController.text =
+            DateFormat.yMd().format(selectedStartDate.value);
+      } else {
+        Get.snackbar(
+          'Terjadi Kesalahan',
+          'Tanggal sewa tidak boleh lewat dari tanggal saat ini',
+        );
+      }
     }
   }
 
