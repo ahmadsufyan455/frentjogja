@@ -97,6 +97,7 @@ class FormController extends GetxController {
     String deliveryLocation,
     String? note,
     String motorType,
+    int days,
   ) {
     final bookingData = Booking(
       name: name,
@@ -110,6 +111,7 @@ class FormController extends GetxController {
       deliveryLocation: deliveryLocation,
       note: note,
       motorType: motorType,
+      days: days,
     );
     try {
       firebaseFirestore
@@ -121,6 +123,10 @@ class FormController extends GetxController {
       Get.toNamed(BookingSucess.routeName);
     } catch (e) {
       log(e.toString());
+      Get.snackbar(
+        'Terjadi Kesalahan',
+        e.toString(),
+      );
     }
   }
 
@@ -136,6 +142,7 @@ class FormController extends GetxController {
     String deliveryLocation,
     String? note,
     String motorType,
+    int days,
   ) {
     final bookingData = Booking(
       name: name,
@@ -149,6 +156,7 @@ class FormController extends GetxController {
       deliveryLocation: deliveryLocation,
       note: note,
       motorType: motorType,
+      days: days,
     );
 
     try {

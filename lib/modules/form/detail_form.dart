@@ -137,6 +137,17 @@ class DetailForm extends StatelessWidget {
                       Text(data[0]['booking'].motorType, style: kBodyBold),
                     ],
                   ),
+                  const SizedBox(height: 16.0),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text('Lama sewa :', style: kBodyRegular),
+                      Text(
+                        '${data[0]['booking'].days} hari',
+                        style: kBodyBold,
+                      ),
+                    ],
+                  ),
                 ],
               ),
             ),
@@ -158,6 +169,7 @@ class DetailForm extends StatelessWidget {
                     data[0]['booking'].deliveryLocation,
                     data[0]['booking'].note,
                     data[0]['booking'].motorType,
+                    data[0]['booking'].days,
                   );
                   controller.submitFormAdmin(
                     data[0]['booking'].name,
@@ -171,6 +183,7 @@ class DetailForm extends StatelessWidget {
                     data[0]['booking'].deliveryLocation,
                     data[0]['booking'].note,
                     data[0]['booking'].motorType,
+                    data[0]['booking'].days,
                   );
                   Get.toNamed(BookingSucess.routeName);
                 },

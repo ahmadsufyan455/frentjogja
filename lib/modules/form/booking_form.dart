@@ -3,6 +3,7 @@ import 'package:frent_jogja/models/booking.dart';
 import 'package:frent_jogja/models/motor.dart';
 import 'package:frent_jogja/modules/form/detail_form.dart';
 import 'package:frent_jogja/modules/form/form_controller.dart';
+import 'package:frent_jogja/utils/helper.dart';
 import 'package:frent_jogja/widget/button.dart';
 import '../../widget/form_input.dart';
 import 'package:get/get.dart';
@@ -42,6 +43,8 @@ class BookingForm extends StatelessWidget {
 
     final Motor motorData = Get.arguments;
     Booking bookingData;
+
+    Helper helper = Helper();
 
     return Scaffold(
       appBar: AppBar(
@@ -206,6 +209,7 @@ class BookingForm extends StatelessWidget {
                         deliveryLocation: controller.deliveryLocation.value,
                         note: controller.noteController.text,
                         motorType: motorData.type,
+                        days: helper.getTotalDays(),
                       );
                       Get.toNamed(
                         DetailForm.routeName,
