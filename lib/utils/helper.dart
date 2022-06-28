@@ -4,23 +4,15 @@ import 'package:get/get.dart';
 class Helper {
   final controller = Get.find<FormController>();
 
-  // TODO: fix bug date day (one character)
-
   int getTotalDays() {
-    final yyStart = int.parse(controller.startDateController.text.substring(5));
-    final mmStart = int.parse(controller.startDateController.text[0]);
-    final ddStart =
-        int.parse(controller.startDateController.text.substring(2, 4));
+    return daysBetween(
+        DateTime.parse(controller.selectedStartDate.value.toString()),
+        DateTime.parse(controller.selectedEndDate.value.toString()));
+  }
 
-    final yyEnd = int.parse(controller.endDateController.text.substring(5));
-    final mmEnd = int.parse(controller.endDateController.text[0]);
-    final ddEnd = int.parse(controller.endDateController.text.substring(2, 4));
-
-    final startDate = DateTime(yyStart, mmStart, ddStart);
-    final endDate = DateTime(yyEnd, mmEnd, ddEnd);
-
-    final days = endDate.difference(startDate).inDays;
-
-    return days;
+  int daysBetween(DateTime from, DateTime to) {
+    from = DateTime(from.year, from.month, from.day);
+    to = DateTime(to.year, to.month, to.day);
+    return (to.difference(from).inHours / 24).round();
   }
 }
