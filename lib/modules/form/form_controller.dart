@@ -98,6 +98,7 @@ class FormController extends GetxController {
     String? note,
     String motorType,
     int days,
+    int totalPrice,
   ) {
     final bookingData = Booking(
       name: name,
@@ -112,6 +113,7 @@ class FormController extends GetxController {
       note: note,
       motorType: motorType,
       days: days,
+      totalPrice: totalPrice,
     );
     try {
       firebaseFirestore
@@ -143,6 +145,7 @@ class FormController extends GetxController {
     String? note,
     String motorType,
     int days,
+    int totalPrice,
   ) {
     final bookingData = Booking(
       name: name,
@@ -157,6 +160,7 @@ class FormController extends GetxController {
       note: note,
       motorType: motorType,
       days: days,
+      totalPrice: totalPrice,
     );
 
     try {
