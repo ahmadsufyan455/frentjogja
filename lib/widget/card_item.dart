@@ -28,7 +28,10 @@ class CardItem extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Image.network(image),
+          FadeInImage.assetNetwork(
+            placeholder: 'assets/images/loading.gif',
+            image: image,
+          ),
           Text('Sewa $type', style: kBodyBold),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
