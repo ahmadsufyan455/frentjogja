@@ -44,7 +44,7 @@ class _DashboardState extends State<Dashboard> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.receipt),
-            label: 'Pemesanan',
+            label: 'Pesanan',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.account_circle),

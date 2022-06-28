@@ -7,12 +7,14 @@ import 'package:get/get.dart';
 class HomeController extends GetxController {
   late TextEditingController searchController;
   RxList<Motor> motors = <Motor>[].obs;
+  RxString username = ''.obs;
 
   @override
   void onInit() {
     super.onInit();
     searchController = TextEditingController();
     motors.bindStream(listMotor());
+    username.bindStream(getUserName());
   }
 
   @override
@@ -21,12 +23,14 @@ class HomeController extends GetxController {
     searchController.dispose();
   }
 
-  Future<DocumentSnapshot<Map<String, dynamic>>>? getUserName() {
+  Stream<String> getUserName() {
     var userId = auth.currentUser?.uid;
-    if (userId != null) {
-      return firebaseFirestore.collection('UserData').doc(userId).get();
-    }
-    return null;
+    Stream<DocumentSnapshot<Map<String, dynamic>>> stream =
+        firebaseFirestore.collection('UserData').doc(userId).snapshots();
+    return stream.map((doc) {
+      Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
+      return data['name'];
+    });
   }
 
   Stream<List<Motor>> listMotor() {

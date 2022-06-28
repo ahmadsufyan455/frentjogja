@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:frent_jogja/modules/detail/detail_screen.dart';
 import '../../../models/motor.dart';
@@ -31,23 +30,13 @@ class HomeScreen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      FutureBuilder(
-                        future: controller.getUserName(),
-                        builder: (BuildContext context,
-                            AsyncSnapshot<DocumentSnapshot> snapshot) {
-                          if (snapshot.connectionState ==
-                              ConnectionState.done) {
-                            Map<String, dynamic> data =
-                                snapshot.data!.data() as Map<String, dynamic>;
-                            return Text(
-                              "Hai, ${data['name']}\nSelamat datang",
-                              style: kHeadingRegular.copyWith(
-                                color: kWhite,
-                              ),
-                            );
-                          }
-                          return Container();
-                        },
+                      Obx(
+                        () => Text(
+                          "Hai, ${controller.username}\nSelamat datang",
+                          style: kHeadingRegular.copyWith(
+                            color: kWhite,
+                          ),
+                        ),
                       ),
                       Image.asset(
                         'assets/images/frent-logo.png',
