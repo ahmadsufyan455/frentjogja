@@ -23,6 +23,7 @@ class BookingController extends GetxController {
           (doc) {
             Map<String, dynamic> data = doc.data();
             return Booking(
+              id: data['id'],
               name: data['name'],
               idNumber: data['idNumber'],
               phoneNumber: data['phoneNumber'],

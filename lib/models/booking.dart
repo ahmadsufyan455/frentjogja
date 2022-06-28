@@ -1,4 +1,5 @@
 class Booking {
+  final int id;
   final String name;
   final int idNumber;
   final int phoneNumber;
@@ -15,6 +16,7 @@ class Booking {
   final int totalPrice;
 
   Booking({
+    required this.id,
     required this.name,
     required this.idNumber,
     required this.phoneNumber,
@@ -33,6 +35,7 @@ class Booking {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
     data['name'] = name;
     data['idNumber'] = idNumber;
     data['phoneNumber'] = phoneNumber;

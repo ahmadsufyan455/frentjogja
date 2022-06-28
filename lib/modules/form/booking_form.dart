@@ -196,6 +196,7 @@ class BookingForm extends StatelessWidget {
                       controller.deliveryLocation.value,
                     )) {
                       bookingData = Booking(
+                        id: controller.bookingId,
                         name: controller.nameController.text,
                         idNumber: int.parse(
                             controller.idNumberController.text.trim()),

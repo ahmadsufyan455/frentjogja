@@ -86,6 +86,7 @@ class FormController extends GetxController {
   }
 
   void submitFormUser(
+    int id,
     String name,
     int idNumber,
     int phoneNumber,
@@ -101,6 +102,7 @@ class FormController extends GetxController {
     int totalPrice,
   ) {
     final bookingData = Booking(
+      id: id,
       name: name,
       idNumber: idNumber,
       phoneNumber: phoneNumber,
@@ -133,6 +135,7 @@ class FormController extends GetxController {
   }
 
   void submitFormAdmin(
+    int id,
     String name,
     int idNumber,
     int phoneNumber,
@@ -148,6 +151,7 @@ class FormController extends GetxController {
     int totalPrice,
   ) {
     final bookingData = Booking(
+      id: id,
       name: name,
       idNumber: idNumber,
       phoneNumber: phoneNumber,

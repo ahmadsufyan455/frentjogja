@@ -158,6 +158,7 @@ class DetailForm extends StatelessWidget {
                 onPressed: () {
                   controller.updateQuantity(data[1]['motor'].id);
                   controller.submitFormUser(
+                    data[0]['booking'].id,
                     data[0]['booking'].name,
                     data[0]['booking'].idNumber,
                     data[0]['booking'].phoneNumber,
@@ -173,6 +174,7 @@ class DetailForm extends StatelessWidget {
                     data[0]['booking'].totalPrice,
                   );
                   controller.submitFormAdmin(
+                    data[0]['booking'].id,
                     data[0]['booking'].name,
                     data[0]['booking'].idNumber,
                     data[0]['booking'].phoneNumber,
