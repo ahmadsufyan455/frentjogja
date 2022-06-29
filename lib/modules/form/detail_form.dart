@@ -84,7 +84,7 @@ class DetailForm extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('Alamat :', style: kBodyRegular),
+                      Text('Alamat di Jogja:', style: kBodyRegular),
                       Text(data[0]['booking'].address, style: kBodyBold),
                     ],
                   ),
@@ -126,7 +126,9 @@ class DetailForm extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text('Keperluan sewa :', style: kBodyRegular),
-                      Text(data[0]['booking'].note, style: kBodyBold),
+                      data[0]['booking'].note != ''
+                          ? Text(data[0]['booking'].note, style: kBodyBold)
+                          : Text('-', style: kBodyBold),
                     ],
                   ),
                   const SizedBox(height: 16.0),

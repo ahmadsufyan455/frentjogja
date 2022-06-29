@@ -107,7 +107,7 @@ class BookingForm extends StatelessWidget {
                     inputType: TextInputType.multiline,
                     controller: controller.addressController,
                     maxLines: 4,
-                    hintText: 'Alamat sesuai KTP*',
+                    hintText: 'Tempat tinggal selama di Jogja*',
                   ),
                   const SizedBox(height: 16.0),
                   Row(
