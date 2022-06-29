@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:frent_jogja/models/user.dart';
+import 'package:frent_jogja/modules/dashboard/profile/edit_profile.dart';
 import 'package:frent_jogja/modules/dashboard/profile/profile_controller.dart';
 import 'package:frent_jogja/utils/constants.dart';
 import 'package:frent_jogja/widget/profile_input.dart';
@@ -71,7 +73,20 @@ class ProfileScreen extends StatelessWidget {
                   isEnable: false,
                 ),
                 const SizedBox(height: 34.0),
-                CustomButton(text: 'Ubah Profil', onPressed: () {}),
+                CustomButton(
+                  text: 'Ubah Profil',
+                  onPressed: () {
+                    final data = UserModel(
+                      name: profileController.nameController.text,
+                      idNumber:
+                          int.parse(profileController.idNumberController.text),
+                      phoneNumber: int.parse(
+                          profileController.phoneNumberController.text),
+                      email: profileController.emailController.text,
+                    );
+                    Get.toNamed(EditProfile.routeName, arguments: data);
+                  },
+                ),
               ],
             ),
           ),
