@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:frent_jogja/models/booking.dart';
 import 'package:frent_jogja/modules/dashboard/booking/booking_controller.dart';
+import 'package:frent_jogja/modules/dashboard/booking/detail_booking.dart';
 import 'package:frent_jogja/utils/constants.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
@@ -41,35 +42,41 @@ class BookingScreen extends StatelessWidget {
                 itemCount: controller.bookingData.length,
                 itemBuilder: (context, index) {
                   final RxList<Booking> data = controller.bookingData;
-                  return Container(
-                    margin: const EdgeInsets.all(16.0),
-                    padding: const EdgeInsets.all(16.0),
-                    decoration: BoxDecoration(
-                      border: Border.all(color: kBlack),
-                      borderRadius: BorderRadius.circular(10.0),
+                  return InkWell(
+                    onTap: () => Get.toNamed(
+                      DetailBooking.routeName,
+                      arguments: data[index],
                     ),
-                    child: Row(
-                      children: [
-                        Image.asset('$image/vario.png', width: 100.0),
-                        const SizedBox(width: 24.0),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(data[index].motorType, style: kBodyRegular),
-                            data[index].isConfirm
-                                ? Text(
-                                    'Dikonfirmasi',
-                                    style: kBodyRegular.copyWith(
-                                      color: Colors.green,
+                    child: Container(
+                      margin: const EdgeInsets.all(16.0),
+                      padding: const EdgeInsets.all(16.0),
+                      decoration: BoxDecoration(
+                        border: Border.all(color: kBlack),
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      child: Row(
+                        children: [
+                          Image.asset('$image/vario.png', width: 100.0),
+                          const SizedBox(width: 24.0),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(data[index].motorType, style: kBodyRegular),
+                              data[index].isConfirm
+                                  ? Text(
+                                      'Dikonfirmasi',
+                                      style: kBodyRegular.copyWith(
+                                        color: Colors.green,
+                                      ),
+                                    )
+                                  : Text(
+                                      'Menunggu konfirmasi',
+                                      style: kBodyRegular.copyWith(color: kRed),
                                     ),
-                                  )
-                                : Text(
-                                    'Menunggu konfirmasi',
-                                    style: kBodyRegular.copyWith(color: kRed),
-                                  ),
-                          ],
-                        ),
-                      ],
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   );
                 },
