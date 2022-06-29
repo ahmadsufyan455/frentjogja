@@ -1,11 +1,14 @@
 import 'dart:developer';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:frent_jogja/models/booking.dart';
 import 'package:frent_jogja/modules/other/booking_success.dart';
 import 'package:frent_jogja/utils/constants.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+
+import '../../models/user.dart';
 
 class FormController extends GetxController {
   late TextEditingController nameController;
@@ -21,11 +24,34 @@ class FormController extends GetxController {
 
   Rx<DateTime> selectedStartDate = DateTime.now().obs;
   Rx<DateTime> selectedEndDate = DateTime.now().obs;
+  Rx<UserModel> user = UserModel(
+    name: '',
+    idNumber: 0,
+    phoneNumber: 0,
+    email: '',
+  ).obs;
 
   RxString pickUpLocation = ''.obs;
   RxString deliveryLocation = ''.obs;
 
   int bookingId = DateTime.now().millisecondsSinceEpoch;
+
+  Stream<UserModel> userData() {
+    Stream<DocumentSnapshot<Map<String, dynamic>>> stream = firebaseFirestore
+        .collection('UserData')
+        .doc(auth.currentUser!.uid)
+        .snapshots();
+
+    return stream.map((qShot) {
+      Map<String, dynamic> data = qShot.data() as Map<String, dynamic>;
+      return UserModel(
+        name: data['name'],
+        idNumber: data['idNumber'],
+        phoneNumber: data['phoneNumber'],
+        email: data['email'],
+      );
+    });
+  }
 
   Future selectStartDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
@@ -83,6 +109,7 @@ class FormController extends GetxController {
     endDateController = TextEditingController();
     otherPickUpController = TextEditingController();
     otherDeliveryController = TextEditingController();
+    user.bindStream(userData());
   }
 
   void submitFormUser(
