@@ -30,7 +30,7 @@ class Payment extends StatelessWidget {
                 paymentStep: [
                   ListTile(
                     title: Text(
-                      '1. Masukkan akun gopay',
+                      'Segera hadir',
                       style: kBodyRegular,
                     ),
                   ),
@@ -42,7 +42,7 @@ class Payment extends StatelessWidget {
                 paymentStep: [
                   ListTile(
                     title: Text(
-                      '1. Masukkan akun ovo',
+                      'Segera hadir',
                       style: kBodyRegular,
                     ),
                   ),
@@ -54,7 +54,7 @@ class Payment extends StatelessWidget {
                 paymentStep: [
                   ListTile(
                     title: Text(
-                      '1. Masukkan akun bank',
+                      'Segera hadir',
                       style: kBodyRegular,
                     ),
                   ),
