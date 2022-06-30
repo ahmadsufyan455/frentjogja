@@ -158,40 +158,46 @@ class DetailForm extends StatelessWidget {
               child: CustomButton(
                 text: 'Kirim Formulir',
                 onPressed: () {
-                  controller.updateQuantity(data[1]['motor'].id);
-                  controller.submitFormUser(
-                    data[0]['booking'].id,
-                    data[0]['booking'].name,
-                    data[0]['booking'].idNumber,
-                    data[0]['booking'].phoneNumber,
-                    data[0]['booking'].email,
-                    data[0]['booking'].address,
-                    data[0]['booking'].startDate,
-                    data[0]['booking'].endDate,
-                    data[0]['booking'].pickUpLocation,
-                    data[0]['booking'].deliveryLocation,
-                    data[0]['booking'].note,
-                    data[0]['booking'].motorType,
-                    data[0]['booking'].days,
-                    data[0]['booking'].totalPrice,
+                  Get.dialog(
+                    const Center(child: CircularProgressIndicator(color: kRed)),
+                    barrierDismissible: false,
                   );
-                  controller.submitFormAdmin(
-                    data[0]['booking'].id,
-                    data[0]['booking'].name,
-                    data[0]['booking'].idNumber,
-                    data[0]['booking'].phoneNumber,
-                    data[0]['booking'].email,
-                    data[0]['booking'].address,
-                    data[0]['booking'].startDate,
-                    data[0]['booking'].endDate,
-                    data[0]['booking'].pickUpLocation,
-                    data[0]['booking'].deliveryLocation,
-                    data[0]['booking'].note,
-                    data[0]['booking'].motorType,
-                    data[0]['booking'].days,
-                    data[0]['booking'].totalPrice,
-                  );
-                  Get.toNamed(BookingSucess.routeName);
+                  Future.delayed(const Duration(seconds: 1), () {
+                    controller.updateQuantity(data[1]['motor'].id);
+                    controller.submitFormUser(
+                      data[0]['booking'].id,
+                      data[0]['booking'].name,
+                      data[0]['booking'].idNumber,
+                      data[0]['booking'].phoneNumber,
+                      data[0]['booking'].email,
+                      data[0]['booking'].address,
+                      data[0]['booking'].startDate,
+                      data[0]['booking'].endDate,
+                      data[0]['booking'].pickUpLocation,
+                      data[0]['booking'].deliveryLocation,
+                      data[0]['booking'].note,
+                      data[0]['booking'].motorType,
+                      data[0]['booking'].days,
+                      data[0]['booking'].totalPrice,
+                    );
+                    controller.submitFormAdmin(
+                      data[0]['booking'].id,
+                      data[0]['booking'].name,
+                      data[0]['booking'].idNumber,
+                      data[0]['booking'].phoneNumber,
+                      data[0]['booking'].email,
+                      data[0]['booking'].address,
+                      data[0]['booking'].startDate,
+                      data[0]['booking'].endDate,
+                      data[0]['booking'].pickUpLocation,
+                      data[0]['booking'].deliveryLocation,
+                      data[0]['booking'].note,
+                      data[0]['booking'].motorType,
+                      data[0]['booking'].days,
+                      data[0]['booking'].totalPrice,
+                    );
+                    Get.toNamed(BookingSucess.routeName);
+                  });
                 },
               ),
             ),
