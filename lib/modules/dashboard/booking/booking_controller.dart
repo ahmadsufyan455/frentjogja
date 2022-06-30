@@ -38,6 +38,8 @@ class BookingController extends GetxController {
               note: data['note'],
               totalPrice: data['totalPrice'],
               isConfirm: data['isConfirm'],
+              motorImage: data['motorImage'],
+              isFinish: data['isFinish'],
             );
           },
         ).toList());

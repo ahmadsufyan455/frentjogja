@@ -213,6 +213,8 @@ class BookingForm extends StatelessWidget {
                           motorType: motorData.type,
                           days: helper.getTotalDays(),
                           totalPrice: motorData.price * helper.getTotalDays(),
+                          motorImage: motorData.image,
+                          isFinish: false,
                         );
                         Get.toNamed(
                           DetailForm.routeName,

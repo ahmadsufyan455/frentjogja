@@ -14,6 +14,8 @@ class Booking {
   bool isConfirm;
   final int days;
   final int totalPrice;
+  final String motorImage;
+  final bool isFinish;
 
   Booking({
     required this.id,
@@ -31,6 +33,8 @@ class Booking {
     this.isConfirm = false,
     required this.days,
     required this.totalPrice,
+    required this.motorImage,
+    required this.isFinish,
   });
 
   Map<String, dynamic> toJson() {
@@ -50,6 +54,8 @@ class Booking {
     data['isConfirm'] = isConfirm;
     data['days'] = days;
     data['totalPrice'] = totalPrice;
+    data['motorImage'] = motorImage;
+    data['isFinish'] = isFinish;
 
     return data;
   }

@@ -179,6 +179,8 @@ class DetailForm extends StatelessWidget {
                       data[0]['booking'].motorType,
                       data[0]['booking'].days,
                       data[0]['booking'].totalPrice,
+                      data[0]['booking'].motorImage,
+                      data[0]['booking'].isFinish,
                     );
                     controller.submitFormAdmin(
                       data[0]['booking'].id,
@@ -195,6 +197,8 @@ class DetailForm extends StatelessWidget {
                       data[0]['booking'].motorType,
                       data[0]['booking'].days,
                       data[0]['booking'].totalPrice,
+                      data[0]['booking'].motorImage,
+                      data[0]['booking'].isFinish,
                     );
                     Get.toNamed(BookingSucess.routeName);
                   });
