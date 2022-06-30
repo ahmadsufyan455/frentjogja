@@ -59,10 +59,14 @@ class AuthController extends GetxController {
   }
 
   _setInitialScreen(User? user) {
-    if (user == null) {
-      Get.offAllNamed(LoginScreen.routeName);
-    } else {
-      Get.offAllNamed(Dashboard.routeName);
+    try {
+      if (user == null) {
+        Get.offAllNamed(LoginScreen.routeName);
+      } else {
+        Get.offAllNamed(Dashboard.routeName);
+      }
+    } catch (e) {
+      log(e.toString());
     }
   }
 

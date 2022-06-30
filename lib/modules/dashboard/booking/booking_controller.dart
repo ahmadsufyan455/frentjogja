@@ -35,6 +35,7 @@ class BookingController extends GetxController {
               deliveryLocation: data['deliveryLocation'],
               motorType: data['motorType'],
               days: data['days'],
+              note: data['note'],
               totalPrice: data['totalPrice'],
               isConfirm: data['isConfirm'],
             );

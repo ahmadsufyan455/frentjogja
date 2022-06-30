@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 class HomeController extends GetxController {
   late TextEditingController searchController;
   RxList<Motor> motors = <Motor>[].obs;
+  RxList<Motor> foundMotors = <Motor>[].obs;
   RxString username = ''.obs;
 
   @override
@@ -15,12 +16,26 @@ class HomeController extends GetxController {
     searchController = TextEditingController();
     motors.bindStream(listMotor());
     username.bindStream(getUserName());
+    foundMotors.value = motors;
   }
 
   @override
   void dispose() {
     super.dispose();
     searchController.dispose();
+  }
+
+  void filterMotor(String type) {
+    List<Motor> results = [];
+    if (type.isEmpty) {
+      results = motors;
+    } else {
+      results = motors
+          .where((value) =>
+              value.type.toString().toLowerCase().contains(type.toLowerCase()))
+          .toList();
+    }
+    foundMotors.value = results;
   }
 
   Stream<String> getUserName() {

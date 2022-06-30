@@ -26,6 +26,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: SplashScreen.routeName,
+      navigatorKey: Get.key,
       getPages: routes,
     );
   }

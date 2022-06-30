@@ -122,7 +122,7 @@ class DetailBooking extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text('Keperluan sewa :', style: kBodyRegular),
-                      data.note == null
+                      data.note == null || data.note == ''
                           ? Text('-', style: kBodyBold)
                           : Text(data.note!, style: kBodyBold),
                     ],

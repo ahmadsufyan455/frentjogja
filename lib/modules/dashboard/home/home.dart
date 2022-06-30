@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frent_jogja/modules/detail/detail_screen.dart';
+import 'package:lottie/lottie.dart';
 import '../../../models/motor.dart';
 import '../../../widget/card_item.dart';
 import '../../../modules/dashboard/home/home_controller.dart';
@@ -46,6 +47,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 16.0),
                   TextField(
+                    onChanged: (value) => controller.filterMotor(value),
                     controller: controller.searchController,
                     style: kBodyRegular,
                     decoration: InputDecoration(
@@ -66,24 +68,31 @@ class HomeScreen extends StatelessWidget {
             ),
             Expanded(
               child: Obx(
-                () => ListView.builder(
-                  itemCount: controller.motors.length,
-                  itemBuilder: (context, index) {
-                    final RxList<Motor> data = controller.motors;
-                    return InkWell(
-                      onTap: () => Get.toNamed(
-                        DetailScreen.routeName,
-                        arguments: data[index],
+                () => controller.foundMotors.isEmpty
+                    ? Padding(
+                        padding: const EdgeInsets.all(34.0),
+                        child: Center(
+                          child: Lottie.asset('assets/lottie/404.json'),
+                        ),
+                      )
+                    : ListView.builder(
+                        itemCount: controller.foundMotors.length,
+                        itemBuilder: (context, index) {
+                          final RxList<Motor> data = controller.foundMotors;
+                          return InkWell(
+                            onTap: () => Get.toNamed(
+                              DetailScreen.routeName,
+                              arguments: data[index],
+                            ),
+                            child: CardItem(
+                              image: data[index].image,
+                              type: data[index].type,
+                              price: data[index].price,
+                              status: data[index].status,
+                            ),
+                          );
+                        },
                       ),
-                      child: CardItem(
-                        image: data[index].image,
-                        type: data[index].type,
-                        price: data[index].price,
-                        status: data[index].status,
-                      ),
-                    );
-                  },
-                ),
               ),
             ),
           ],
