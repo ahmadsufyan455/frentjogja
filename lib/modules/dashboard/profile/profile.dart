@@ -87,6 +87,7 @@ class ProfileScreen extends StatelessWidget {
                     Get.toNamed(EditProfile.routeName, arguments: data);
                   },
                 ),
+                const SizedBox(height: 16.0),
               ],
             ),
           ),

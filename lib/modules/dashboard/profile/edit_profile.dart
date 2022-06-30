@@ -72,6 +72,7 @@ class EditProfile extends StatelessWidget {
                   });
                 },
               ),
+              const SizedBox(height: 16.0),
             ],
           ),
         ),

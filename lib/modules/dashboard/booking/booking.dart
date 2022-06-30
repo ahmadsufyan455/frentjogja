@@ -48,7 +48,12 @@ class BookingScreen extends StatelessWidget {
                       arguments: data[index],
                     ),
                     child: Container(
-                      margin: const EdgeInsets.all(16.0),
+                      margin: const EdgeInsets.only(
+                        right: 16.0,
+                        top: 16.0,
+                        left: 16.0,
+                        bottom: 8.0,
+                      ),
                       padding: const EdgeInsets.all(16.0),
                       decoration: BoxDecoration(
                         border: Border.all(color: kBlack),
