@@ -207,8 +207,14 @@ class BookingForm extends StatelessWidget {
                           address: controller.addressController.text.trim(),
                           startDate: controller.startDateController.text.trim(),
                           endDate: controller.endDateController.text.trim(),
-                          pickUpLocation: controller.pickUpLocation.value,
-                          deliveryLocation: controller.deliveryLocation.value,
+                          pickUpLocation:
+                              controller.pickUpLocation.value == 'Lainnya'
+                                  ? controller.otherPickUpController.text
+                                  : controller.pickUpLocation.value,
+                          deliveryLocation:
+                              controller.deliveryLocation.value == 'Lainnya'
+                                  ? controller.otherDeliveryController.text
+                                  : controller.deliveryLocation.value,
                           note: controller.noteController.text,
                           motorType: motorData.type,
                           days: helper.getTotalDays(),

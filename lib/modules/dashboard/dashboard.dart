@@ -50,7 +50,7 @@ class _DashboardState extends State<Dashboard> {
               icon: const Icon(Icons.receipt),
               label: bookingC.getTotalBooking() == 0
                   ? 'Pesanan'
-                  : 'Pesanan(${bookingC.getTotalBooking()})',
+                  : 'Pesanan (${bookingC.getTotalBooking()})',
             ),
             const BottomNavigationBarItem(
               icon: Icon(Icons.account_circle),
