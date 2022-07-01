@@ -80,10 +80,18 @@ class BookingScreen extends StatelessWidget {
                                             color: Colors.green,
                                           ),
                                         )
-                                  : Text(
-                                      'Menunggu konfirmasi',
-                                      style: kBodyRegular.copyWith(color: kRed),
-                                    ),
+                                  : data[index].isFinish
+                                      ? Text(
+                                          'Selesai',
+                                          style: kBodyRegular.copyWith(
+                                            color: Colors.blue,
+                                          ),
+                                        )
+                                      : Text(
+                                          'Menunggu konfirmasi',
+                                          style: kBodyRegular.copyWith(
+                                              color: kRed),
+                                        ),
                             ],
                           ),
                         ],
