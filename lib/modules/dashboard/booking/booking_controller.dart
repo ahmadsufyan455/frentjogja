@@ -12,6 +12,9 @@ class BookingController extends GetxController {
     bookingData.bindStream(bookingList());
   }
 
+  int getTotalBooking() =>
+      bookingData.where((value) => value.isConfirm == false).toList().length;
+
   Stream<List<Booking>> bookingList() {
     Stream<QuerySnapshot<Map<String, dynamic>>> stream = firebaseFirestore
         .collection('UserData')

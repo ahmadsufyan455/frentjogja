@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:frent_jogja/models/booking.dart';
 import 'package:frent_jogja/modules/dashboard/booking/booking_controller.dart';
 import 'package:frent_jogja/modules/dashboard/booking/detail_booking.dart';
-import 'package:frent_jogja/utils/constants.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
