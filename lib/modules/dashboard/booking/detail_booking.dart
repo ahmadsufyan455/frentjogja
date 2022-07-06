@@ -152,11 +152,15 @@ class DetailBooking extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(24.0),
               child: CustomButton(
-                text: 'Pembayaran',
-                onPressed: () => Get.toNamed(
-                  Payment.routeName,
-                  arguments: data,
-                ),
+                text: data.isConfirm ? 'Sudah Bayar' : 'Pembayaran',
+                onPressed: () {
+                  if (!data.isConfirm) {
+                    Get.toNamed(
+                      Payment.routeName,
+                      arguments: data,
+                    );
+                  }
+                },
               ),
             ),
           ],

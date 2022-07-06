@@ -1,4 +1,3 @@
-// TODO: id should be replace with bookingId
 class Booking {
   final String bookingId;
   final String name;
