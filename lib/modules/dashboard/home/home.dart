@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frent_jogja/modules/detail/detail_screen.dart';
+import 'package:frent_jogja/modules/other/about.dart';
 import 'package:lottie/lottie.dart';
 import '../../../models/motor.dart';
 import '../../../widget/card_item.dart';
@@ -39,9 +40,12 @@ class HomeScreen extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Image.asset(
-                        'assets/images/frent-logo.png',
-                        width: 50,
+                      InkWell(
+                        onTap: () => Get.toNamed(AboutPage.routeName),
+                        child: Image.asset(
+                          'assets/images/frent-logo.png',
+                          width: 50,
+                        ),
                       ),
                     ],
                   ),
