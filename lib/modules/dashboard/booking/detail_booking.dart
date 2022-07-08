@@ -160,7 +160,7 @@ class DetailBooking extends StatelessWidget {
                       ),
                     ),
                   )
-                : Text('Sudah bayar', style: kHeadingRegular),
+                : Text('Sudah melakukan pembayaran 👍', style: kBodyRegular),
           ],
         ),
       ),

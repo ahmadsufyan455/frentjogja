@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frent_jogja/modules/dashboard/booking/booking_controller.dart';
+import 'package:frent_jogja/modules/other/faq.dart';
 import '../../modules/dashboard/booking/booking.dart';
 import '../../modules/dashboard/home/home.dart';
 import '../../modules/dashboard/profile/profile.dart';
@@ -20,6 +21,7 @@ class _DashboardState extends State<Dashboard> {
   final List<Widget> _children = const [
     HomeScreen(),
     BookingScreen(),
+    Faq(),
     ProfileScreen(),
   ];
 
@@ -51,6 +53,10 @@ class _DashboardState extends State<Dashboard> {
               label: bookingC.getTotalBooking() == 0
                   ? 'Pesanan'
                   : 'Pesanan (${bookingC.getTotalBooking()})',
+            ),
+            const BottomNavigationBarItem(
+              icon: Icon(Icons.question_answer_outlined),
+              label: 'FAQ',
             ),
             const BottomNavigationBarItem(
               icon: Icon(Icons.account_circle),
