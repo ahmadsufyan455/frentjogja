@@ -56,7 +56,7 @@ class _DashboardState extends State<Dashboard> {
             ),
             const BottomNavigationBarItem(
               icon: Icon(Icons.question_answer_outlined),
-              label: 'FAQ',
+              label: 'Faq',
             ),
             const BottomNavigationBarItem(
               icon: Icon(Icons.account_circle),

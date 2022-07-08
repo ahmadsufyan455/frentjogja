@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:frent_jogja/utils/constants.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 import '../../utils/styles.dart';
 
@@ -45,6 +46,14 @@ class AboutPage extends StatelessWidget {
                 textAlign: TextAlign.justify,
               ),
               const SizedBox(height: 16.0),
+              const SizedBox(
+                height: 300.0,
+                child: WebView(
+                  javascriptMode: JavascriptMode.unrestricted,
+                  initialUrl:
+                      'https://www.google.com/maps/place/Sewa+Motor+Jogja+dan+Rental+Motor+Jogja+-+FRent+Jogja/@-7.7937679,110.3836353,18.04z/data=!4m5!3m4!1s0x2e7a1418a27c6e3d:0x7d902f6a07ff7b18!8m2!3d-7.793836!4d110.384618',
+                ),
+              ),
             ],
           ),
         ),
