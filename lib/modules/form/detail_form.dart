@@ -163,9 +163,9 @@ class DetailForm extends StatelessWidget {
                     barrierDismissible: false,
                   );
                   Future.delayed(const Duration(seconds: 1), () {
-                    controller.updateQuantity(data[1]['motor'].id);
+                    controller.updateQuantity(data[1]['motor'].motorId);
                     controller.submitFormUser(
-                      data[0]['booking'].id,
+                      data[0]['booking'].bookingId,
                       data[0]['booking'].name,
                       data[0]['booking'].idNumber,
                       data[0]['booking'].phoneNumber,
@@ -183,7 +183,7 @@ class DetailForm extends StatelessWidget {
                       data[0]['booking'].isFinish,
                     );
                     controller.submitFormAdmin(
-                      data[0]['booking'].id,
+                      data[0]['booking'].bookingId,
                       data[0]['booking'].name,
                       data[0]['booking'].idNumber,
                       data[0]['booking'].phoneNumber,

@@ -26,7 +26,7 @@ class BookingController extends GetxController {
           (doc) {
             Map<String, dynamic> data = doc.data();
             return Booking(
-              id: data['id'],
+              bookingId: data['bookingId'],
               name: data['name'],
               idNumber: data['idNumber'],
               phoneNumber: data['phoneNumber'],
@@ -46,5 +46,23 @@ class BookingController extends GetxController {
             );
           },
         ).toList());
+  }
+
+  void updateStatus(String bookingId) {
+    firebaseFirestore
+        .collection('BookingData')
+        .doc(bookingId)
+        .get()
+        .then((value) {
+      firebaseFirestore
+          .collection('UserData')
+          .doc(auth.currentUser!.uid)
+          .collection('BookingData')
+          .doc(bookingId)
+          .update({
+        'isConfirm': value['isConfirm'],
+        'isFinish': value['isFinish'],
+      });
+    });
   }
 }

@@ -1,6 +1,7 @@
 import 'package:frent_jogja/modules/dashboard/booking/detail_booking.dart';
 import 'package:frent_jogja/modules/dashboard/profile/edit_profile.dart';
 import 'package:frent_jogja/modules/form/detail_form.dart';
+import 'package:frent_jogja/modules/other/about.dart';
 import 'package:frent_jogja/modules/other/payment.dart';
 
 import '../modules/other/booking_success.dart';
@@ -69,5 +70,9 @@ List<GetPage> routes = [
   GetPage(
     name: EditProfile.routeName,
     page: () => const EditProfile(),
+  ),
+  GetPage(
+    name: AboutPage.routeName,
+    page: () => const AboutPage(),
   ),
 ];

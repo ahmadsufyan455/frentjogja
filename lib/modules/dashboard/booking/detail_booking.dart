@@ -149,16 +149,18 @@ class DetailBooking extends StatelessWidget {
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(24.0),
-              child: CustomButton(
-                text: 'Pembayaran',
-                onPressed: () => Get.toNamed(
-                  Payment.routeName,
-                  arguments: data,
-                ),
-              ),
-            ),
+            !data.isConfirm
+                ? Padding(
+                    padding: const EdgeInsets.all(24.0),
+                    child: CustomButton(
+                      text: data.isConfirm ? 'Sudah Bayar' : 'Pembayaran',
+                      onPressed: () => Get.toNamed(
+                        Payment.routeName,
+                        arguments: data,
+                      ),
+                    ),
+                  )
+                : Text('Sudah melakukan pembayaran 👍', style: kBodyRegular),
           ],
         ),
       ),

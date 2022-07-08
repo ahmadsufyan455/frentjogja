@@ -41,6 +41,7 @@ class BookingScreen extends StatelessWidget {
                 itemCount: controller.bookingData.length,
                 itemBuilder: (context, index) {
                   final RxList<Booking> data = controller.bookingData;
+                  controller.updateStatus(data[index].bookingId);
                   return InkWell(
                     onTap: () => Get.toNamed(
                       DetailBooking.routeName,
