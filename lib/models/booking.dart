@@ -7,6 +7,7 @@ class Booking {
   final String address;
   final String startDate;
   final String endDate;
+  final String startTime;
   final String pickUpLocation;
   final String deliveryLocation;
   final String? note;
@@ -26,6 +27,7 @@ class Booking {
     required this.address,
     required this.startDate,
     required this.endDate,
+    required this.startTime,
     required this.pickUpLocation,
     required this.deliveryLocation,
     this.note,
@@ -47,6 +49,7 @@ class Booking {
     data['address'] = address;
     data['startDate'] = startDate;
     data['endDate'] = endDate;
+    data['startTime'] = startTime;
     data['pickUpLocation'] = pickUpLocation;
     data['deliveryLocation'] = deliveryLocation;
     data['note'] = note;

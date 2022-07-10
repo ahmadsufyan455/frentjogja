@@ -146,6 +146,24 @@ class BookingForm extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: 16.0),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: FormInput(
+                          hintText: 'Jam penjemputan*',
+                          isEnable: false,
+                          controller: controller.startTimeController,
+                        ),
+                      ),
+                      const SizedBox(width: 24.0),
+                      IconButton(
+                        onPressed: () => controller.selectStartTime(context),
+                        icon: const Icon(Icons.access_time),
+                      ),
+                      const SizedBox(width: 24.0),
+                    ],
+                  ),
+                  const SizedBox(height: 16.0),
                   const DropDownInputPickUp(),
                   controller.pickUpLocation.value == 'Lainnya'
                       ? Container(
@@ -207,6 +225,7 @@ class BookingForm extends StatelessWidget {
                           address: controller.addressController.text.trim(),
                           startDate: controller.startDateController.text.trim(),
                           endDate: controller.endDateController.text.trim(),
+                          startTime: controller.startTimeController.text.trim(),
                           pickUpLocation:
                               controller.pickUpLocation.value == 'Lainnya'
                                   ? controller.otherPickUpController.text

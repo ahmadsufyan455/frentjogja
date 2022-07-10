@@ -34,6 +34,7 @@ class BookingController extends GetxController {
               address: data['address'],
               startDate: data['startDate'],
               endDate: data['endDate'],
+              startTime: data['startTime'],
               pickUpLocation: data['pickUpLocation'],
               deliveryLocation: data['deliveryLocation'],
               motorType: data['motorType'],
