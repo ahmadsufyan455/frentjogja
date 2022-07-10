@@ -19,11 +19,13 @@ class FormController extends GetxController {
   late TextEditingController noteController;
   late TextEditingController startDateController;
   late TextEditingController endDateController;
+  late TextEditingController startTimeController;
   late TextEditingController otherPickUpController;
   late TextEditingController otherDeliveryController;
 
   Rx<DateTime> selectedStartDate = DateTime.now().obs;
   Rx<DateTime> selectedEndDate = DateTime.now().obs;
+  Rx<TimeOfDay> selectedTime = TimeOfDay.now().obs;
   Rx<UserModel> user = UserModel(
     name: '',
     idNumber: 0,
@@ -96,6 +98,23 @@ class FormController extends GetxController {
     }
   }
 
+  Future selectStartTime(BuildContext context) async {
+    final TimeOfDay? timeOfDay = await showTimePicker(
+        context: context,
+        initialTime: selectedTime.value,
+        initialEntryMode: TimePickerEntryMode.dial);
+    if (timeOfDay != null) {
+      selectedTime.value = timeOfDay;
+      final localizations = MaterialLocalizations.of(Get.context!);
+      final formattedTimeOfDay = localizations.formatTimeOfDay(
+        timeOfDay,
+        alwaysUse24HourFormat:
+            MediaQuery.of(Get.context!).alwaysUse24HourFormat,
+      );
+      startTimeController.text = formattedTimeOfDay;
+    }
+  }
+
   @override
   void onInit() {
     super.onInit();
@@ -107,6 +126,7 @@ class FormController extends GetxController {
     noteController = TextEditingController();
     startDateController = TextEditingController();
     endDateController = TextEditingController();
+    startTimeController = TextEditingController();
     otherPickUpController = TextEditingController();
     otherDeliveryController = TextEditingController();
     user.bindStream(userData());
@@ -121,6 +141,7 @@ class FormController extends GetxController {
     String address,
     String startDate,
     String endDate,
+    String startTime,
     String pickUpLocation,
     String deliveryLocation,
     String? note,
@@ -139,6 +160,7 @@ class FormController extends GetxController {
       address: address,
       startDate: startDate,
       endDate: endDate,
+      startTime: startTime,
       pickUpLocation: pickUpLocation,
       deliveryLocation: deliveryLocation,
       note: note,
@@ -174,6 +196,7 @@ class FormController extends GetxController {
     String address,
     String startDate,
     String endDate,
+    String startTime,
     String pickUpLocation,
     String deliveryLocation,
     String? note,
@@ -192,6 +215,7 @@ class FormController extends GetxController {
       address: address,
       startDate: startDate,
       endDate: endDate,
+      startTime: startTime,
       pickUpLocation: pickUpLocation,
       deliveryLocation: deliveryLocation,
       note: note,
@@ -231,6 +255,7 @@ class FormController extends GetxController {
     noteController.dispose();
     startDateController.dispose();
     endDateController.dispose();
+    startTimeController.dispose();
     otherPickUpController.dispose();
     otherDeliveryController.dispose();
   }
