@@ -150,6 +150,17 @@ class DetailForm extends StatelessWidget {
                       ),
                     ],
                   ),
+                  const SizedBox(height: 16.0),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text('Total bayar :', style: kBodyRegular),
+                      Text(
+                        'Rp. ${data[0]['booking'].totalPrice}',
+                        style: kBodyBold,
+                      ),
+                    ],
+                  ),
                 ],
               ),
             ),
