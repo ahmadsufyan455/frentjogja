@@ -167,7 +167,7 @@ class DetailBooking extends StatelessWidget {
                       text: data.isConfirm ? 'Sudah Bayar' : 'Pembayaran',
                       onPressed: () => Get.toNamed(
                         Payment.routeName,
-                        arguments: data,
+                        arguments: data.totalPrice,
                       ),
                     ),
                   )

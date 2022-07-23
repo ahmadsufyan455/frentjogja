@@ -13,6 +13,7 @@ class BookingSucess extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final data = Get.arguments;
     return Scaffold(
         body: Center(
       child: Padding(
@@ -28,9 +29,9 @@ class BookingSucess extends StatelessWidget {
             ),
             const SizedBox(height: 34.0),
             CustomButton(
-                text: 'Pembayaran',
+                text: 'Pesanan',
                 onPressed: () {
-                  Get.toNamed(Payment.routeName);
+                  Get.toNamed(Payment.routeName, arguments: data);
                 }),
             const SizedBox(height: 16.0),
             CustomButton(

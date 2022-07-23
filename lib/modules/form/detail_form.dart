@@ -15,6 +15,7 @@ class DetailForm extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(FormController());
     final data = Get.arguments;
+    final totalPrice = data[0]['booking'].totalPrice;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kRed,
@@ -213,7 +214,10 @@ class DetailForm extends StatelessWidget {
                       data[0]['booking'].motorImage,
                       data[0]['booking'].isFinish,
                     );
-                    Get.toNamed(BookingSucess.routeName);
+                    Get.toNamed(
+                      BookingSucess.routeName,
+                      arguments: totalPrice,
+                    );
                   });
                 },
               ),
