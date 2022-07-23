@@ -13,6 +13,14 @@ class BookingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(BookingController());
+    RxList<Booking> data = controller.bookingData;
+
+    Future refresh() async {
+      for (int i = 0; i < data.length; i++) {
+        controller.updateStatus(data[i].bookingId);
+      }
+    }
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kRed,
@@ -37,69 +45,73 @@ class BookingScreen extends StatelessWidget {
                   ),
                 ),
               )
-            : ListView.builder(
-                itemCount: controller.bookingData.length,
-                itemBuilder: (context, index) {
-                  final RxList<Booking> data = controller.bookingData;
-                  controller.updateStatus(data[index].bookingId);
-                  return InkWell(
-                    onTap: () => Get.toNamed(
-                      DetailBooking.routeName,
-                      arguments: data[index],
-                    ),
-                    child: Container(
-                      margin: const EdgeInsets.only(
-                        right: 16.0,
-                        top: 16.0,
-                        left: 16.0,
-                        bottom: 8.0,
+            : RefreshIndicator(
+                onRefresh: refresh,
+                child: ListView.builder(
+                  itemCount: controller.bookingData.length,
+                  itemBuilder: (context, index) {
+                    //data = controller.bookingData;
+                    controller.updateStatus(data[index].bookingId);
+                    return InkWell(
+                      onTap: () => Get.toNamed(
+                        DetailBooking.routeName,
+                        arguments: data[index],
                       ),
-                      padding: const EdgeInsets.all(16.0),
-                      decoration: BoxDecoration(
-                        border: Border.all(color: kBlack),
-                        borderRadius: BorderRadius.circular(10.0),
+                      child: Container(
+                        margin: const EdgeInsets.only(
+                          right: 16.0,
+                          top: 16.0,
+                          left: 16.0,
+                          bottom: 8.0,
+                        ),
+                        padding: const EdgeInsets.all(16.0),
+                        decoration: BoxDecoration(
+                          border: Border.all(color: kBlack),
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        child: Row(
+                          children: [
+                            Image.network(data[index].motorImage, width: 100.0),
+                            const SizedBox(width: 24.0),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(data[index].motorType,
+                                    style: kBodyRegular),
+                                data[index].isConfirm
+                                    ? data[index].isFinish
+                                        ? Text(
+                                            'Selesai',
+                                            style: kBodyRegular.copyWith(
+                                              color: Colors.blue,
+                                            ),
+                                          )
+                                        : Text(
+                                            'Dikonfirmasi',
+                                            style: kBodyRegular.copyWith(
+                                              color: Colors.green,
+                                            ),
+                                          )
+                                    : data[index].isFinish
+                                        ? Text(
+                                            'Selesai',
+                                            style: kBodyRegular.copyWith(
+                                              color: Colors.blue,
+                                            ),
+                                          )
+                                        : Text(
+                                            'Menunggu konfirmasi',
+                                            style: kBodyRegular.copyWith(
+                                                color: kRed),
+                                          ),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
-                      child: Row(
-                        children: [
-                          Image.network(data[index].motorImage, width: 100.0),
-                          const SizedBox(width: 24.0),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(data[index].motorType, style: kBodyRegular),
-                              data[index].isConfirm
-                                  ? data[index].isFinish
-                                      ? Text(
-                                          'Selesai',
-                                          style: kBodyRegular.copyWith(
-                                            color: Colors.blue,
-                                          ),
-                                        )
-                                      : Text(
-                                          'Dikonfirmasi',
-                                          style: kBodyRegular.copyWith(
-                                            color: Colors.green,
-                                          ),
-                                        )
-                                  : data[index].isFinish
-                                      ? Text(
-                                          'Selesai',
-                                          style: kBodyRegular.copyWith(
-                                            color: Colors.blue,
-                                          ),
-                                        )
-                                      : Text(
-                                          'Menunggu konfirmasi',
-                                          style: kBodyRegular.copyWith(
-                                              color: kRed),
-                                        ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  );
-                },
+                    );
+                  },
+                ),
               ),
       ),
     );
