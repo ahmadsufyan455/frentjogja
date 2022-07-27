@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:frent_jogja/modules/detail/detail_screen.dart';
 import 'package:frent_jogja/modules/other/about.dart';
 import 'package:lottie/lottie.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../../models/motor.dart';
 import '../../../widget/card_item.dart';
 import '../../../modules/dashboard/home/home_controller.dart';
@@ -100,6 +101,18 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
           ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.green.shade700,
+        onPressed: () async =>
+            // ignore: deprecated_member_use
+            await launch(
+          'https://wa.me/6287838938806?text=Halo, saya ingin menyewa motor',
+        ),
+        child: const Icon(
+          Icons.phone,
+          color: kWhite,
         ),
       ),
     );
