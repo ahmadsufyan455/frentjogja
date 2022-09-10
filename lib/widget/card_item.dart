@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frent_jogja/utils/helper.dart';
 
 import '../utils/styles.dart';
 
@@ -40,7 +41,8 @@ class CardItem extends StatelessWidget {
                 children: [
                   const Icon(Icons.price_change, color: kBlack),
                   const SizedBox(width: 10.0),
-                  Text('Rp.$price/hari', style: kBodyRegular),
+                  Text('${Helper.convertToIdr(price, 2)}/hari',
+                      style: kBodyRegular),
                 ],
               ),
               Text(
