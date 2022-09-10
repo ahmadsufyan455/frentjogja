@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import '../../modules/form/booking_form.dart';
-import '../other/empty_form.dart';
-import '../../utils/constants.dart';
-import '../../models/motor.dart';
+import 'package:frent_jogja/utils/helper.dart';
 import 'package:get/get.dart';
 
+import '../../models/motor.dart';
+import '../../modules/form/booking_form.dart';
+import '../../utils/constants.dart';
 import '../../utils/styles.dart';
+import '../other/empty_form.dart';
 
 class DetailScreen extends StatelessWidget {
   const DetailScreen({Key? key}) : super(key: key);
@@ -71,7 +72,7 @@ class DetailScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Rp.${data.price}/hari',
+                    '${Helper.convertToIdr(data.price, 2)}/hari',
                     style: kBodyBold.copyWith(color: kGrey),
                   ),
                   InkWell(
